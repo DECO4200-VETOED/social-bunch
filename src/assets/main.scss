@@ -1,10 +1,14 @@
-// Imports
+///// Imports /////
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap');
 
-// Colour variables
+///// Colour variables /////
 $bg-color: #FAF6F1;
+$orange: #F9A27D;
+$yellow: #F9D07E;
+$blue: #B8D5DB;
+$green: #3DA194;
 
-// Mixins
+///// Mixins /////
 @mixin serif {
     font-family: 'Noto serif', serif;
 }
@@ -20,6 +24,8 @@ body {
     // background: $bg-color;
     background: red;
 }
+
+///// Text styles /////
 
 h1 {
     font-size: 64px;
