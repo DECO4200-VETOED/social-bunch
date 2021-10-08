@@ -1,0 +1,48 @@
+// Imports
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap');
+
+// Colour variables
+$bg-color: #FAF6F1;
+
+// Mixins
+@mixin serif {
+    font-family: 'Noto serif', serif;
+}
+
+@mixin sans-serif {
+    font-family: 'Open sans', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100px;
+    margin: 0;
+    // background: $bg-color;
+    background: red;
+}
+
+h1 {
+    font-size: 64px;
+    @include serif;
+}
+
+h2 {
+    font-size: 48px;
+    @include serif;
+}
+
+h3 {
+    font-size: 36px;
+    @include serif;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: 700;
+    @include sans-serif;
+}
+
+p {
+    font-size: 19px;
+    @include sans-serif;
+}
