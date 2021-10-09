@@ -9,7 +9,9 @@ export default new Vuex.Store({
     },
     mutations: {
         loadState(state) {
-            Vue.set(state)
+            Vue.set(state, 'data', {
+                members: ["Hello 1", "Hello 2", "Forris Byrne", "Margaux Thwaites", "Veronica Mars", "Thelma Louise", "Thelma Louise", "Thelma Louise", "Thelma Louise", "Thelma Louise Thelma Louise Thelma Louise"]
+            })
         }
 
     },
@@ -17,6 +19,6 @@ export default new Vuex.Store({
 
     },
     getters: {
-        // wholeSurvey: state => state.survey,
+        members: state => state.data.members,
     }
 })

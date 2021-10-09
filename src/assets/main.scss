@@ -1,7 +1,9 @@
 ///// Imports /////
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@900&display=swap');
 
 ///// Colour variables /////
+
 $bg-color: #FAF6F1;
 $orange: #F9A27D;
 $yellow: #F9D07E;
@@ -9,20 +11,24 @@ $blue: #B8D5DB;
 $green: #3DA194;
 
 ///// Mixins /////
+
 @mixin serif {
-    font-family: 'Noto serif', serif;
+    font-family: 'Source serif pro', serif;
+    color: black;
 }
 
 @mixin sans-serif {
     font-family: 'Open sans', sans-serif;
+    color: black;
 }
+
+///// Default HTML styling /////
 
 body {
     width: 100%;
     height: 100px;
     margin: 0;
-    // background: $bg-color;
-    background: red;
+    background: $bg-color;
 }
 
 ///// Text styles /////
@@ -51,4 +57,70 @@ h4 {
 p {
     font-size: 19px;
     @include sans-serif;
+}
+
+///// Lines /////
+
+hr {
+    width: 100%;
+    text-align: center;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-width: 0;
+
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: black;
+}
+
+///// Popups /////
+
+/* The Modal (background) */
+.modal {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: $orange;
+    background-color: rgba($orange, .7);
+}
+
+/* Modal Content/Box */
+.modal-content {
+    position: relative;
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    flex-direction: column;
+    background-color: $bg-color;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid black;
+    width: 70%;
+    height: 70%;
+    border-radius: 30px;
+}
+
+.popup-header {
+    display: inline-block;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    cursor: pointer;
 }
