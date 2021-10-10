@@ -10,7 +10,7 @@
 
 <script>
 import './assets/main.scss'
-import store from './store/Store.js'
+import store from './store/index.js'
 
 export default {
   name: "App",

@@ -8,7 +8,7 @@
 
 <script>
 import Popup from '../components/Popup.vue'
-import store from '../store/Store.js'
+import store from '../store/index.js'
 import { mapGetters } from "vuex";
 
 export default {

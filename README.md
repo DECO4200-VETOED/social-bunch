@@ -1,4 +1,4 @@
-# social-bunch
+# social-bunch-sass
 
 ## Project setup
 ```
