@@ -11,7 +11,7 @@ export default new Vuex.Store({
                 onlyCalls: false,
             },
             currentPage: "home",
-            colors: ["green", "yellow", "orange", "blue"],
+            tabColors: ["green", "yellow", "orange", "blue", "yellow", "orange", "blue", "yellow", "orange", "blue"],
             profile: {
                 name: "Margaret O'Leary",
                 avatar: "avatar-placeholder.png",
@@ -20,76 +20,77 @@ export default new Vuex.Store({
                 sharing: false,
             },
             groups: [{
-                title: "Art club",
-                icon: "easel",
-                nextMeeting: {
-                    response: null,
-                    time: "10:00am Fri 16th Oct",
-                    type: "video",
-                    location: null,
-                    responses: [{
-                            name: "Betty Augustine",
-                            attending: false
-                        },
-                        {
-                            name: "Doris Byrne",
-                            attending: true
-                        },
-                        {
-                            name: "Karen Charles",
-                            attending: null
-                        },
-                    ]
+                    title: "Art club",
+                    icon: "paint",
+                    nextMeeting: {
+                        response: null,
+                        time: "10:00am Fri 16th Oct",
+                        type: "video",
+                        location: null,
+                        responses: [{
+                                name: "Betty Augustine",
+                                attending: false
+                            },
+                            {
+                                name: "Doris Byrne",
+                                attending: true
+                            },
+                            {
+                                name: "Karen Charles",
+                                attending: null
+                            },
+                        ]
+                    },
+                    members: [{
+                        name: "Betty Augustine",
+                        avatar: "avatar-placeholder.png",
+                        telephone: "0411232343",
+                        email: "betty.a23@gmail.com"
+                    }, {
+                        name: "Doris Byrne",
+                        avatar: "avatar-placeholder.png",
+                        telephone: "0411222333",
+                        email: "dbyrne@gmail.com"
+                    }],
                 },
-                members: [{
-                    name: "Betty Augustine",
-                    avatar: "avatar-placeholder.png",
-                    telephone: "0411232343",
-                    email: "betty.a23@gmail.com"
-                }, {
-                    name: "Doris Byrne",
-                    avatar: "avatar-placeholder.png",
-                    telephone: "0411222333",
-                    email: "dbyrne@gmail.com"
-                }],
-            },
-            {
-                title: "Book club",
-                icon: "book",
-                nextMeeting: {
-                    response: null,
-                    time: "10:00am Fri 16th Oct",
-                    type: "video",
-                    location: null,
-                    responses: [{
-                            name: "Betty Augustine",
-                            attending: false
-                        },
-                        {
-                            name: "Doris Byrne",
-                            attending: true
-                        },
-                        {
-                            name: "Karen Charles",
-                            attending: null
-                        },
-                    ]
-                },
-                members: [{
-                    name: "Betty Augustine",
-                    avatar: "avatar-placeholder.png",
-                    telephone: "0411232343",
-                    email: "betty.a23@gmail.com"
-                }, {
-                    name: "Doris Byrne",
-                    avatar: "avatar-placeholder.png",
-                    telephone: "0411222333",
-                    email: "dbyrne@gmail.com"
-                }],
-            }],
+                {
+                    title: "Book club",
+                    icon: "book",
+                    nextMeeting: {
+                        response: null,
+                        time: "10:00am Fri 16th Oct",
+                        type: "video",
+                        location: null,
+                        responses: [{
+                                name: "Betty Augustine",
+                                attending: false
+                            },
+                            {
+                                name: "Doris Byrne",
+                                attending: true
+                            },
+                            {
+                                name: "Karen Charles",
+                                attending: null
+                            },
+                        ]
+                    },
+                    members: [{
+                        name: "Betty Augustine",
+                        avatar: "avatar-placeholder.png",
+                        telephone: "0411232343",
+                        email: "betty.a23@gmail.com"
+                    }, {
+                        name: "Doris Byrne",
+                        avatar: "avatar-placeholder.png",
+                        telephone: "0411222333",
+                        email: "dbyrne@gmail.com"
+                    }],
+                }
+            ],
             invites: [{
                 title: "Plant Society",
-                icon: "easel",
+                icon: "paint",
                 nextMeeting: {
                     response: null,
                     time: "11:00am Sat 17th Oct",
@@ -150,6 +151,21 @@ export default new Vuex.Store({
     },
     getters: {
         members: state => state.data.members,
-        tabs: state => state.data.tabs,
+        // tabs: state => state.data.tabs,
+        tabs: state => {
+            let tabs = state.data.groups.map((g, index) => g[index] = {
+                text: g.title,
+                color: state.data.tabColors[index + 1]
+            })
+            tabs.unshift({
+                text: "Home",
+                color: 'green'
+            })
+            return tabs
+        },
+        groups: state => {
+            return state.data.groups
+        },
+        tabColors: state => state.data.tabColors,
     }
 })

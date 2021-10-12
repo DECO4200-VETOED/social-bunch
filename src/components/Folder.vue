@@ -6,6 +6,7 @@
         :key="index"
         class="tab"
         :class="tab.color"
+        @click="route(index)"
       >
         <span
           ><p>{{ tab.text }}</p></span
@@ -14,7 +15,7 @@
     </div>
     <div class="folder-area" :class="activeColor">
       <div class="folder-header" :class="activeColor">
-        <h1>Art club</h1>
+        <h1>{{title}}</h1>
         <div class="folder-nav">
           <button><i class="fas fa-user fa-lg"></i>CONTACTS</button>
           <button><i class="fas fa-phone fa-lg"></i>MY PROFILE</button>
@@ -22,25 +23,45 @@
         </div>
       </div>
       <!-- CONDITIONALLY INSERT OTHER COMPONENTS HERE BASED ON CURRENT PAGE -->
-      
 
+      <group v-if="groupInd != null"></group>
     </div>
   </div>
 </template>
 
 <script>
 import store from "../store/index.js";
+import Group from "./Group.vue";
 import { mapGetters } from "vuex";
 
 export default {
   name: "Folder",
+  components: {
+    Group,
+  },
   store: store,
   props: {
     activeColor: String,
-    title: String,
+    groupInd: Number,
   },
   computed: {
-    ...mapGetters(["tabs"]),
+    ...mapGetters(["tabs"], ["tabColors"]),
+    title() {
+      if (this.groupInd != null) {
+        return this.$store.state.data.groups[this.groupInd - 1].title
+      }
+    }
+  },
+  methods: {
+    route(index) {
+      if (index == this.groupInd) {
+        return;
+      } else if (index == 0) {
+        this.$router.push("/home");
+      } else {
+        this.$router.push(`/group/${index}`);
+      }
+    },
   },
 };
 </script>
@@ -99,7 +120,7 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin-block: 30px;
+    // margin-block: 30px;
   }
 }
 
@@ -142,19 +163,19 @@ export default {
   border-bottom-color: black;
 
   &.blue {
-    border-bottom-color: $blue;
+    border-color: $blue;
   }
 
   &.orange {
-    border-bottom-color: $orange;
+    border-color: $orange;
   }
 
   &.yellow {
-    border-bottom-color: $yellow;
+    border-color: $yellow;
   }
 
   &.green {
-    border-bottom-color: $green;
+    border-color: $green;
   }
 }
 

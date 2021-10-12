@@ -2,11 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
+import Group from '../views/Group.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/home',
     name: 'Home',
     component: Home
@@ -15,6 +15,17 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About
+  },
+  // {
+  //   path: '/group',
+  //   name: 'Group',
+  //   component: Group
+  // },
+  {
+    path: '/group/:id',
+    name: 'Group',
+    component: Group,
+    props: true
   },
   // {
   //   path: '/about',

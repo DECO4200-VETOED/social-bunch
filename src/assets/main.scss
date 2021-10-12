@@ -36,6 +36,8 @@ body {
 h1 {
     font-size: 64px;
     @include serif;
+    margin-block: 30px;
+
 }
 
 h2 {

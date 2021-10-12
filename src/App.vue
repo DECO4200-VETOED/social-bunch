@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/home">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/group">Group</router-link>
+    </div> -->
     <router-view/>
   </div>
 </template>
@@ -16,7 +17,7 @@ export default {
   name: "App",
   store: store,
   created() {
-    store.commit("loadState")
+    // store.commit("loadState")
   }
 }
 
