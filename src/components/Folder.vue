@@ -5,7 +5,7 @@
         v-for="(tab, index) in tabs"
         :key="index"
         class="tab"
-        :class="tab.color"
+        :class="tab.color + isActive(index)"
         @click="route(index)"
       >
         <span
@@ -19,12 +19,13 @@
         <div class="folder-nav">
           <button><i class="fas fa-user fa-lg"></i>CONTACTS</button>
           <button><i class="fas fa-phone fa-lg"></i>MY PROFILE</button>
-          <button class="info">i</button>
+          <button class="info"><i class="fas fa-info fa-lg"></i></button>
         </div>
       </div>
-      <!-- CONDITIONALLY INSERT OTHER COMPONENTS HERE BASED ON CURRENT PAGE -->
 
+      <!-- CONDITIONALLY INSERT OTHER COMPONENTS HERE BASED ON CURRENT PAGE -->
       <group v-if="groupInd != null"></group>
+
     </div>
   </div>
 </template>
@@ -50,7 +51,7 @@ export default {
       if (this.groupInd != null) {
         return this.$store.state.data.groups[this.groupInd - 1].title
       }
-    }
+    },
   },
   methods: {
     route(index) {
@@ -62,6 +63,14 @@ export default {
         this.$router.push(`/group/${index}`);
       }
     },
+    isActive(index) {
+      if (this.groupInd == index) {
+        return " active"
+      }
+
+      return ""
+
+    }
   },
 };
 </script>
@@ -128,7 +137,7 @@ export default {
   min-width: 400px;
   display: flex;
   justify-content: space-between;
-  margin-left: 60px;
+  margin-left: 30px;
 
   button {
     font-size: 19px;
@@ -137,18 +146,20 @@ export default {
     border: none;
     background-color: $bg-color;
     cursor: pointer;
+    margin-left: 20px;
   }
 
   button.info {
-    @include serif;
-
     color: white;
     background-color: $green;
-    min-width: 48px;
-    min-height: 48px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    font-size: 36px;
-    font-weight: 700;
+    text-align: center;
+    
+    .fas {
+      margin: 0 auto;
+    }
   }
 }
 
@@ -222,6 +233,11 @@ export default {
 
   &.yellow {
     background-color: $yellow;
+  }
+
+  &.active {
+    width: 56px;
+
   }
 }
 </style>

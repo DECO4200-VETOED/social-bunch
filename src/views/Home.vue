@@ -19,17 +19,37 @@
       <div class="tile" @click="route(3)"></div>
     </div>
 
-    <div class="meetings-block">
-    <h3>Upcoming meetings</h3>
-      <p>Art club: 10:00AM Tuesday, 3rd January</p>
-      <p>Art club: 10:00AM Tuesday, 3rd January</p>
+    <div class="bottom-section">
+      <div class="meetings-block">
+        <div class="heading-row">
+          <h3>Upcoming meetings</h3>
+          <h4>Attending?</h4>
+        </div>
+
+        <div class="group-row">
+          <div class="group-label">
+            <div class="group-key blue"></div>
+            <p>Art club: 10:00AM Tuesday, 3rd January</p>
+          </div>
+          <button class="join-call">Join call</button>
+        </div>
+        
+
+        <div class="group-row">
+          <div class="group-label">
+            <div class="group-key yellow"></div>
+            <p>Art club: 10:00AM Tuesday, 3rd January</p>
+          </div>
+          <div class="rsvp-row">
+            <button class="rsvp yellow"><i class="fas fa-thumbs-up fa-2x"></i></button>
+            <button class="rsvp">
+              <i class="fas fa-thumbs-down fa-2x"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="circle" @click="route()"></div>
     </div>
-
-
-
-    <div class="circle" @click="route()"></div>
-
-
   </div>
 </template>
 
@@ -40,20 +60,14 @@ import { mapGetters } from "vuex";
 export default {
   name: "Home",
   store: store,
-  props: {
-    activeColor: String,
-    title: String,
-  },
   computed: {
     ...mapGetters(["tabs"]),
   },
   methods: {
     route(num) {
-      this.$router.push(`/group/${num}`) 
-      // this.$router.push('/group'); 
-      // path: `/user/${userId}`
-    }
-  }
+      this.$router.push(`/group/${num}`);
+    },
+  },
 };
 </script>
 
@@ -64,15 +78,110 @@ export default {
   margin-right: 8px;
 }
 
-h3 {
-    margin-block-start: 0; 
-    margin-block-end: 0; 
+h3,
+h4 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.meetings-block {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 60px;
+  width: 100%;
+  margin-bottom: 30px;
+  max-width: 700px;
+  p {
+    font-weight: 700;
+  }
+}
+
+.bottom-section {
+  margin-left: 60px;
+  margin-right: 300px;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.heading-row,
+.group-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+
+  .group-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .group-key {
+      margin-right: 15px;
+      width: 30px;
+      height: 15px;
+
+      &.blue {
+        background-color: $blue;
+      }
+
+      &.orange {
+        background-color: $orange;
+      }
+
+      &.yellow {
+        background-color: $yellow;
+      }
+    }
   }
 
-  .meetings-block {
-    margin: 0 60px;
-    text-align: left;
+  .rsvp-row {
+    width: 140px;
+    display: flex;
+    justify-content: space-between;
   }
+
+  button {
+    &.join-call {
+      @include sans-serif;
+      color: white;
+      background-color: black;
+      padding: 16px;
+      width: 140px;
+      font-size: 19px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      border-radius: 30px;
+    }
+
+    &.rsvp {
+      border-radius: 50%;
+      border: 2px solid black;
+      width: 56px;
+      height: 56px;
+      background-color: white;
+
+      .fas {
+        margin: 0 auto;
+      }
+
+      &.blue {
+        background-color: $blue;
+      }
+
+      &.orange {
+        background-color: $orange;
+      }
+
+      &.yellow {
+        background-color: $yellow;
+      }
+    }
+  }
+}
 
 .circle {
   position: absolute;
@@ -80,6 +189,8 @@ h3 {
   bottom: 0;
   height: 280px;
   width: 280px;
+  min-height: 280px;
+  min-width: 280px;
   background-color: $green;
   border-radius: 100% 0 0 0;
 }
@@ -98,7 +209,6 @@ h3 {
   margin: 30px 0;
   cursor: pointer;
   border-radius: 30px;
-
 }
 
 .row {
@@ -106,8 +216,6 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  
-  
 
   button {
     @include sans-serif;
@@ -120,7 +228,6 @@ h3 {
     border: none;
     cursor: pointer;
     border-radius: 30px;
-
   }
 }
 
@@ -167,9 +274,7 @@ h3 {
     background-color: $bg-color;
     cursor: pointer;
     height: 48px;
-
   }
-
 }
 
 .home-header {
