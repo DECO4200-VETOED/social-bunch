@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/main.scss";
+@import "./src/assets/main.scss";
 
 .fas {
   margin-right: 8px;

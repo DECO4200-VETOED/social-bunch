@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/main.scss";
+@import "./src/assets/main.scss";
 
 .group-area {
   margin: 60px 60px;
