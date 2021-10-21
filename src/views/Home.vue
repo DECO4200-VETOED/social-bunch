@@ -10,7 +10,7 @@
 
     <div class="row">
       <h3>Your groups</h3>
-      <button><i class="fas fa-plus fa-me"></i>Create a group</button>
+      <button class="long green"><i class="fas fa-plus fa-me"></i>Create a group</button>
     </div>
 
     <div class="tile-row">
@@ -31,7 +31,7 @@
             <div class="group-key blue"></div>
             <p>Art club: 10:00AM Tuesday, 3rd January</p>
           </div>
-          <button class="join-call">Join call</button>
+          <button class="black long join-call ">Join call</button>
         </div>
         
 
@@ -145,39 +145,15 @@ h4 {
 
   button {
     &.join-call {
-      @include sans-serif;
-      color: white;
-      background-color: black;
-      padding: 16px;
       width: 140px;
-      font-size: 19px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      border-radius: 30px;
     }
 
     &.rsvp {
-      border-radius: 50%;
-      border: 2px solid black;
       width: 56px;
       height: 56px;
-      background-color: white;
 
       .fas {
         margin: 0 auto;
-      }
-
-      &.blue {
-        background-color: $blue;
-      }
-
-      &.orange {
-        background-color: $orange;
-      }
-
-      &.yellow {
-        background-color: $yellow;
       }
     }
   }
@@ -218,16 +194,8 @@ h4 {
   align-items: flex-end;
 
   button {
-    @include sans-serif;
-    color: white;
-    background-color: $green;
-    padding: 16px;
     width: 350px;
-    font-size: 19px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    border-radius: 30px;
+    margin: 0;
   }
 }
 

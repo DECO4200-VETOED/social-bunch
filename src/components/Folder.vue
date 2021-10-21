@@ -24,7 +24,7 @@
       </div>
 
       <!-- CONDITIONALLY INSERT OTHER COMPONENTS HERE BASED ON CURRENT PAGE -->
-      <group v-if="groupInd != null"></group>
+      <group v-if="groupInd != null" :groupInd="groupInd"></group>
 
     </div>
   </div>

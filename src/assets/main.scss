@@ -79,6 +79,52 @@ hr {
     border-top-color: black;
 }
 
+///// Buttons /////
+button {
+    cursor: pointer;
+    color: black;
+    border: 0;
+
+    &.rsvp {
+        border-radius: 50%;
+        border: 2px solid black;
+        background-color: white;
+    }
+
+    &.blue {
+        background-color: $blue;
+    }
+
+    &.orange {
+        background-color: $orange;
+    }
+
+    &.yellow {
+        background-color: $yellow;
+    }
+
+    &.long {
+        border-radius: 30px;
+        padding: 16px;
+        @include sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 16px 0;
+    }
+
+    &.black {
+        background-color: black;
+        color: white;
+    }
+
+    &.green {
+        background-color: $green;
+        color: white;
+    }
+
+
+}
+
 ///// Popups /////
 
 /* The Modal (background) */

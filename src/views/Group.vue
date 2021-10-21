@@ -18,15 +18,10 @@ export default {
     Folder
   },
   computed: {
-    ...mapGetters(["tabColors"], ["groups"]),
+    ...mapGetters(["tabColors"]),
     groupInd() {
       return this.$route.params.id
     }
   },
-  created() {
-    // if (this.groupInd > this.groups.length) {
-    //   console.log("NOT A GROUP!")
-    // }
-  }
 }
 </script>
