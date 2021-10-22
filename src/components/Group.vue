@@ -68,12 +68,6 @@ export default {
         }
       }
     }
-  //     route(title) {
-  //       if (title === 'Home') {
-  //         this.$router.push('/home')
-  //       }
-  //     }
-  //   }
 };
 </script>
 
