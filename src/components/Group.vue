@@ -3,19 +3,27 @@
     <div v-if="groupInd != 1" class="left">
       <div class="info">
         <h4>Your next meeting starts at</h4>
-        <h3>{{group.nextMeeting.time}}</h3>
+        <h3>{{ group.nextMeeting.time }}</h3>
         <p style="font-weight: 700">A join button will appear at that time</p>
       </div>
       <h4>Can you attend?</h4>
       <div class="rsvp-row">
         <div>
-          <button class="rsvp" :class="group.nextMeeting.response == true ? groupColor : ''" @click="triggerRSVP(true)">
+          <button
+            class="rsvp"
+            :class="group.nextMeeting.response == true ? groupColor : ''"
+            @click="triggerRSVP(true)"
+          >
             <i class="fas fa-thumbs-up fa-4x"></i>
           </button>
           <h4>Yes</h4>
         </div>
         <div>
-          <button class="rsvp" :class="group.nextMeeting.response == false ? groupColor : ''" @click="triggerRSVP(false)">
+          <button
+            class="rsvp"
+            :class="group.nextMeeting.response == false ? groupColor : ''"
+            @click="triggerRSVP(false)"
+          >
             <i class="fas fa-thumbs-down fa-4x"></i>
           </button>
           <h4>No</h4>
@@ -51,23 +59,23 @@ export default {
   },
   computed: {
     group() {
-      return store.getters.groupByInd(this.groupInd)
+      return store.getters.groupByInd(this.groupInd);
     },
     groupColor() {
-      console.log(store.getters.colorByGroup(this.groupInd))
-      return store.getters.colorByGroup(this.groupInd)
-    }
+      console.log(store.getters.colorByGroup(this.groupInd));
+      return store.getters.colorByGroup(this.groupInd);
+    },
   },
-    methods: {
-      triggerRSVP(button) {
-        console.log(button)
-        if (this.group.nextMeeting.response == button) {
-          this.group.nextMeeting.response = null
-        } else {
-          this.group.nextMeeting.response = button
-        }
+  methods: {
+    triggerRSVP(button) {
+      console.log(button);
+      if (this.group.nextMeeting.response == button) {
+        this.group.nextMeeting.response = null;
+      } else {
+        this.group.nextMeeting.response = button;
       }
-    }
+    },
+  },
 };
 </script>
 
@@ -86,6 +94,36 @@ export default {
     width: calc(100% / 2);
     padding-right: 60px;
     justify-content: center;
+
+    h4 {
+      margin-top: 0;
+    }
+
+    .info {
+      margin-bottom: 16px;
+      h4,
+      h3 {
+        margin: 8px 0;
+      }
+    }
+
+    .rsvp-row {
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 16px;
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      button {
+        height: 84px;
+        width: 84px;
+        margin-bottom: 8px;
+      }
+    }
   }
 
   .right {
@@ -107,32 +145,6 @@ export default {
       border: none;
       padding: 0;
     }
-  }
-}
-
-.info {
-  margin-bottom: 16px;
-  h4,
-  h3 {
-    margin: 8px 0;
-  }
-}
-
-.rsvp-row {
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  justify-content: center;
-  margin-bottom: 16px;
-
-  h4 {
-    margin-top: 0;
-  }
-
-  button {
-    height: 84px;
-    width: 84px;
-    margin-bottom: 8px;
   }
 }
 </style>
