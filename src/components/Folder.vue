@@ -99,9 +99,61 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-start;
+
 
   overflow: scroll;
+
+  .tab {
+  z-index: 10;
+  margin: 8px 0;
+  min-height: 200px;
+  width: 48px;
+  border-radius: 8px 0 0 8px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+
+  // overflow: hidden;
+
+  span {
+    height: 160px;
+    padding-top: 20px;
+  }
+
+  p {
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    overflow: hidden;
+    height: 160px;
+    transform: rotate(180deg);
+  }
+
+  &.green {
+    background-color: $green;
+  }
+
+  &.blue {
+    background-color: $blue;
+  }
+
+  &.orange {
+    background-color: $orange;
+  }
+
+  &.yellow {
+    background-color: $yellow;
+  }
+
+  &.active {
+    width: 56px;
+
+  }
+}
 }
 
 .folder-area {
@@ -190,55 +242,6 @@ export default {
   }
 }
 
-.tab {
-  z-index: 10;
-  margin: 8px 0;
-  height: 200px;
-  width: 48px;
-  border-radius: 8px 0 0 8px;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;
-  display: flex;
-  cursor: pointer;
 
-  overflow: hidden;
-
-  span {
-    height: 160px;
-    padding-top: 20px;
-  }
-
-  p {
-    writing-mode: vertical-rl;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    display: inline-block;
-    overflow: hidden;
-    height: 160px;
-    transform: rotate(180deg);
-  }
-
-  &.green {
-    background-color: $green;
-  }
-
-  &.blue {
-    background-color: $blue;
-  }
-
-  &.orange {
-    background-color: $orange;
-  }
-
-  &.yellow {
-    background-color: $yellow;
-  }
-
-  &.active {
-    width: 56px;
-
-  }
-}
 </style>
 
