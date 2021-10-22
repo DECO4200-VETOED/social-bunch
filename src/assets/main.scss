@@ -26,7 +26,8 @@ $green: #3DA194;
 
 body {
     width: 100%;
-    height: 100px;
+    height: calc(100% - 65px);
+    overflow: hidden;
     margin: 0;
     background: $bg-color;
 }
