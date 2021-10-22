@@ -24,7 +24,7 @@ export default new Vuex.Store({
                     icon: "paint",
                     nextMeeting: {
                         response: null,
-                        time: "10:00am Fri 16th Oct",
+                        time: "11:00am Fri 16th Oct",
                         type: "video",
                         location: null,
                         responses: [{
@@ -151,7 +151,6 @@ export default new Vuex.Store({
     },
     getters: {
         members: state => state.data.members,
-        // tabs: state => state.data.tabs,
         tabs: state => {
             let tabs = state.data.groups.map((g, index) => g[index] = {
                 text: g.title,
@@ -167,5 +166,12 @@ export default new Vuex.Store({
             return state.data.groups
         },
         tabColors: state => state.data.tabColors,
+        groupByInd: (state) => (ind) => {
+            return state.data.groups[ind-1]
+        },
+        colorByGroup: (state) => (ind) => {
+            return state.data.tabColors[ind]
+        }
+
     }
 })

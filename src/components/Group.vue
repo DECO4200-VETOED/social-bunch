@@ -1,27 +1,27 @@
 <template>
   <div class="group-area">
-    <div v-if="groupInd == 1" class="left">
+    <div v-if="groupInd != 1" class="left">
       <div class="info">
         <h4>Your next meeting starts at</h4>
-        <h3>10:00am Fri 16th Oct</h3>
+        <h3>{{group.nextMeeting.time}}</h3>
         <p style="font-weight: 700">A join button will appear at that time</p>
       </div>
       <h4>Can you attend?</h4>
       <div class="rsvp-row">
         <div>
-          <button class="rsvp yellow">
+          <button class="rsvp" :class="group.nextMeeting.response == true ? groupColor : ''" @click="triggerRSVP(true)">
             <i class="fas fa-thumbs-up fa-4x"></i>
           </button>
           <h4>Yes</h4>
         </div>
         <div>
-          <button class="rsvp">
+          <button class="rsvp" :class="group.nextMeeting.response == false ? groupColor : ''" @click="triggerRSVP(false)">
             <i class="fas fa-thumbs-down fa-4x"></i>
           </button>
           <h4>No</h4>
         </div>
       </div>
-      <button class="long yellow">See who's responded</button>
+      <button class="long" :class="groupColor">See who's responded</button>
     </div>
 
     <div v-else class="left">
@@ -29,20 +29,19 @@
         <h4>Your current meeting started at</h4>
         <h3>10:00am Fri 16th Oct</h3>
       </div>
-      <button class="long yellow">See who's responded</button>
+      <button class="long" :class="groupColor">See who's responded</button>
       <button class="long black">Join call</button>
     </div>
 
     <div class="right">
-      <button>Members</button>
-      <button>Message Board</button>
+      <button :class="groupColor">Members</button>
+      <button :class="groupColor">Message Board</button>
     </div>
   </div>
 </template>
 
 <script>
 import store from "../store/index.js";
-// import { mapGetters } from "vuex";
 
 export default {
   name: "Group",
@@ -50,10 +49,25 @@ export default {
   props: {
     groupInd: Number,
   },
-  //   computed: {
-  //     ...mapGetters(["tabs"]),
-  //   },
-  //   methods: {
+  computed: {
+    group() {
+      return store.getters.groupByInd(this.groupInd)
+    },
+    groupColor() {
+      console.log(store.getters.colorByGroup(this.groupInd))
+      return store.getters.colorByGroup(this.groupInd)
+    }
+  },
+    methods: {
+      triggerRSVP(button) {
+        console.log(button)
+        if (this.group.nextMeeting.response == button) {
+          this.group.nextMeeting.response = null
+        } else {
+          this.group.nextMeeting.response = button
+        }
+      }
+    }
   //     route(title) {
   //       if (title === 'Home') {
   //         this.$router.push('/home')
@@ -92,7 +106,6 @@ export default {
     button {
       width: calc(100% - 60px);
       margin-left: 60px;
-      background-color: $yellow;
       height: 250px;
       @include serif;
       font-size: 36px;
