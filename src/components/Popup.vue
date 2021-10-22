@@ -1,8 +1,8 @@
 <template>
-  <div v-if="this.showModal" class="modal orange">
+  <div class="modal" :class="color">
     <div class="modal-content">
       <h2>{{ this.title }}</h2>
-      <i class="fas fa-times close fa-3x" @click="triggerClose"></i>
+      <i class="fas fa-times close fa-3x" @click="$emit('triggerClose')"></i>
       <hr />
 
       <!-- Members modal menu content -->
@@ -12,8 +12,8 @@
           :key="index"
           class="member"
         >
-          <img src="../assets/avatar-placeholder.png" />
-          <h4>{{ member }}</h4>
+          <img :src="require('@/assets/' + member.avatar)"  />
+          <h4>{{ member.name }}</h4>
         </div>
       </div>
 
@@ -28,23 +28,21 @@ export default {
   props: {
     title: String,
     content: Object,
-    show: Boolean,
     type: String,
-  },
-  data() {
-    return {
-      showModal: this.show,
-    };
+    color: String,
   },
   methods: {
-    triggerClose() {
-      this.showModal = !this.showModal;
-    },
-  },
+    avatarSrc(src) {
+      console.log('../assets/' + src)
+      return '../assets/' + src
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+@import "./src/assets/main.scss";
+
 h2 {
   text-align: center;
   margin: 16px;
@@ -57,9 +55,75 @@ h2 {
   flex-direction: column;
 }
 
+///// Popups /////
+
+/* The Modal (background) */
+.modal {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  &.blue {
+    background-color: $blue;
+    background-color: rgba($blue, 0.7);
+  }
+
+  &.orange {
+    background-color: $orange;
+    background-color: rgba($orange, 0.7);
+  }
+
+  &.yellow {
+    background-color: $yellow;
+    background-color: rgba($yellow, 0.7);
+  }
+
+  &.green {
+    background-color: $green;
+    background-color: rgba($green, 0.7);
+  }
+}
+
+/* Modal Content/Box */
+.modal-content {
+  position: relative;
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $bg-color;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid black;
+  width: 70%;
+  height: 70%;
+  border-radius: 30px;
+}
+
+.popup-header {
+  display: inline-block;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* The Close Button */
+.close {
+  color: black;
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  cursor: pointer;
+}
+
 ///// Members Popup Styles /////
 .members {
   padding: 0 30%;
+  overflow: auto;
 }
 
 h4 {

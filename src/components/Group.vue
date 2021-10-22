@@ -42,7 +42,7 @@
     </div>
 
     <div class="right">
-      <button :class="groupColor">Members</button>
+      <button :class="groupColor" @click="$emit('showMembers')">Members</button>
       <button :class="groupColor">Message Board</button>
     </div>
   </div>
@@ -62,7 +62,6 @@ export default {
       return store.getters.groupByInd(this.groupInd);
     },
     groupColor() {
-      console.log(store.getters.colorByGroup(this.groupInd));
       return store.getters.colorByGroup(this.groupInd);
     },
   },
