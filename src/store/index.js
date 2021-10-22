@@ -10,7 +10,6 @@ export default new Vuex.Store({
                 signedIn: true,
                 onlyCalls: false,
             },
-            currentPage: "home",
             tabColors: ["green", "yellow", "orange", "blue", "yellow", "orange", "blue", "yellow", "orange", "blue"],
             profile: {
                 name: "Margaret O'Leary",
@@ -23,6 +22,7 @@ export default new Vuex.Store({
                     title: "Art club",
                     icon: "paint",
                     nextMeeting: {
+                        happeningNow: true,
                         response: null,
                         time: "11:00am Fri 16th Oct",
                         type: "video",
@@ -57,8 +57,9 @@ export default new Vuex.Store({
                     title: "Book club",
                     icon: "book",
                     nextMeeting: {
+                        happeningNow: false,
                         response: null,
-                        time: "10:00am Fri 16th Oct",
+                        time: "1:00pm Fri 16th Oct",
                         type: "video",
                         location: null,
                         responses: [{
@@ -92,6 +93,7 @@ export default new Vuex.Store({
                 title: "Plant Society",
                 icon: "paint",
                 nextMeeting: {
+                    happeningNow: false,
                     response: null,
                     time: "11:00am Sat 17th Oct",
                     type: "video",
@@ -171,6 +173,23 @@ export default new Vuex.Store({
         },
         colorByGroup: (state) => (ind) => {
             return state.data.tabColors[ind]
+        },
+        nextTwoMeetings: state => {
+            let meetings = []
+
+            for (let i = 0; i < 2; i++) {
+                meetings.push({
+                    text: state.data.groups[i].title + ": " + state.data.groups[i].nextMeeting.time,
+                    color: state.data.tabColors[i+1],
+                    happeningNow: state.data.groups[i].nextMeeting.happeningNow,
+                    response: state.data.groups[i].nextMeeting.response,
+                    groupInd: i + 1
+                })
+                
+            }
+
+            console.log(meetings)
+            return meetings
         }
 
     }

@@ -10,7 +10,9 @@
 
     <div class="row">
       <h3>Your groups</h3>
-      <button class="long green"><i class="fas fa-plus fa-me"></i>Create a group</button>
+      <button class="long green">
+        <i class="fas fa-plus fa-me"></i>Create a group
+      </button>
     </div>
 
     <div class="tile-row">
@@ -26,23 +28,31 @@
           <h4>Attending?</h4>
         </div>
 
-        <div class="group-row">
+        <div
+          v-for="meeting in nextTwoMeetings"
+          :key="meeting.groupInd"
+          class="group-row"
+        >
           <div class="group-label">
-            <div class="group-key blue"></div>
-            <p>Art club: 10:00AM Tuesday, 3rd January</p>
+            <div class="group-key" :class="meeting.color"></div>
+            <p>{{ meeting.text }}</p>
           </div>
-          <button class="black long join-call ">Join call</button>
-        </div>
-        
-
-        <div class="group-row">
-          <div class="group-label">
-            <div class="group-key yellow"></div>
-            <p>Art club: 10:00AM Tuesday, 3rd January</p>
-          </div>
-          <div class="rsvp-row">
-            <button class="rsvp yellow"><i class="fas fa-thumbs-up fa-2x"></i></button>
-            <button class="rsvp">
+          <button v-if="meeting.happeningNow" class="black long join-call">
+            Join call
+          </button>
+          <div v-else class="rsvp-row">
+            <button
+              class="rsvp"
+              :class="meeting.response == true ? meeting.color : ''"
+              @click="triggerRSVP(true, meeting)"
+            >
+              <i class="fas fa-thumbs-up fa-2x"></i>
+            </button>
+            <button
+              class="rsvp"
+              :class="meeting.response == false ? meeting.color : ''"
+              @click="triggerRSVP(false, meeting)"
+            >
               <i class="fas fa-thumbs-down fa-2x"></i>
             </button>
           </div>
@@ -61,11 +71,19 @@ export default {
   name: "Home",
   store: store,
   computed: {
-    ...mapGetters(["tabs"]),
+    ...mapGetters(["tabs", "nextTwoMeetings"]),
   },
   methods: {
     route(num) {
       this.$router.push(`/group/${num}`);
+    },
+    triggerRSVP(button, meeting) {
+      if (meeting.response == button) {
+        store.getters.groupByInd(meeting.groupInd).nextMeeting.response = null;
+      } else {
+        store.getters.groupByInd(meeting.groupInd).nextMeeting.response =
+          button;
+      }
     },
   },
 };
@@ -103,7 +121,6 @@ h4 {
   margin-right: 300px;
   display: flex;
   flex-direction: row;
-
 }
 
 .heading-row,

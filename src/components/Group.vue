@@ -1,6 +1,6 @@
 <template>
   <div class="group-area">
-    <div v-if="groupInd != 1" class="left">
+    <div v-if="!group.nextMeeting.happeningNow" class="left">
       <div class="info">
         <h4>Your next meeting starts at</h4>
         <h3>{{ group.nextMeeting.time }}</h3>
@@ -35,7 +35,7 @@
     <div v-else class="left">
       <div class="info">
         <h4>Your current meeting started at</h4>
-        <h3>10:00am Fri 16th Oct</h3>
+        <h3>{{ group.nextMeeting.time }}</h3>
       </div>
       <button class="long" :class="groupColor">See who's responded</button>
       <button class="long black">Join call</button>
@@ -67,7 +67,6 @@ export default {
   },
   methods: {
     triggerRSVP(button) {
-      console.log(button);
       if (this.group.nextMeeting.response == button) {
         this.group.nextMeeting.response = null;
       } else {

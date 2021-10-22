@@ -102,7 +102,8 @@ export default {
   justify-content: flex-start;
 
 
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   .tab {
   z-index: 10;
