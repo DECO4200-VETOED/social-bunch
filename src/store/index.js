@@ -7,7 +7,7 @@ export default new Vuex.Store({
     state: {
         data: {
             settings: {
-                signedIn: true,
+                signedIn: false,
                 onlyCalls: false,
             },
             tabColors: ["green", "yellow", "orange", "blue", "yellow", "orange", "blue", "yellow", "orange", "blue"],
@@ -145,6 +145,9 @@ export default new Vuex.Store({
                     color: "orange"
                 }],
             })
+        },
+        toggleOnlyCalls(state) {
+            state.data.settings.onlyCalls = !state.data.settings.onlyCalls
         }
 
     },
@@ -153,6 +156,8 @@ export default new Vuex.Store({
     },
     getters: {
         members: state => state.data.members,
+        signedIn: state => state.data.settings.signedIn,
+        onlyCalls: state => state.data.settings.onlyCalls,
         tabs: state => {
             let tabs = state.data.groups.map((g, index) => g[index] = {
                 text: g.title,

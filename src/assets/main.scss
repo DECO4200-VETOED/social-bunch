@@ -25,11 +25,16 @@ $green: #3DA194;
 ///// Default HTML styling /////
 
 body {
-    width: 100%;
-    height: calc(100% - 65px);
+    min-width: 100%;
+    // min-height: calc(100% - 65px);
+    min-height: 100%;
     overflow: hidden;
     margin: 0;
     background: $bg-color;
+}
+
+html {
+    height: 100%;
 }
 
 ///// Text styles /////
@@ -121,6 +126,12 @@ button {
     &.green {
         background-color: $green;
         color: white;
+    }
+
+    &.outline {
+        background-color: transparent;
+        border: 2px solid black;
+        color: black;
     }
 
 

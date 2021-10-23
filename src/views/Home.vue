@@ -70,6 +70,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "Home",
   store: store,
+  // created() {
+  //   if (!store.getters.signedIn) {
+  //     this.$router.push("/");
+  //   }
+  // },
   computed: {
     ...mapGetters(["tabs", "nextTwoMeetings"]),
   },
@@ -216,34 +221,34 @@ h4 {
   }
 }
 
-.home-area {
-  background-color: $bg-color;
-  width: 100%;
-  height: 100%;
-  border-left-style: solid;
-  border-left-width: 5px;
-  max-width: calc(100% - 69px);
+// .home-area {
+//   background-color: $bg-color;
+//   width: 100%;
+//   height: 100%;
+//   border-left-style: solid;
+//   border-left-width: 5px;
+//   max-width: calc(100% - 69px);
 
-  &.blue {
-    border-color: $blue;
-  }
+//   &.blue {
+//     border-color: $blue;
+//   }
 
-  &.orange {
-    border-color: $orange;
-  }
+//   &.orange {
+//     border-color: $orange;
+//   }
 
-  &.yellow {
-    border-color: $yellow;
-  }
+//   &.yellow {
+//     border-color: $yellow;
+//   }
 
-  h1 {
-    text-align: left;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin-block: 30px;
-  }
-}
+//   h1 {
+//     text-align: left;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+//     overflow: hidden;
+//     margin-block: 30px;
+//   }
+// }
 
 .home-nav {
   min-width: 350px;
