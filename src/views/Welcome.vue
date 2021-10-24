@@ -11,16 +11,14 @@
 
     <!-- TOGGLE ON -->
     <div v-if="onlyCalls" class="right green-bg">
-        <h2>Join a call</h2>
-        <p>
-          You can join a call using a code from your club, which you may have
-          received by email.
-        </p>
-        <p class="label">Enter group code:</p>
-        <input type="text" />
-        <button class="long green sans">
-          Proceed to call settings
-        </button>
+      <h2>Join a call</h2>
+      <p>
+        You can join a call using a code from your club, which you may have
+        received by email.
+      </p>
+      <p class="label">Enter group code:</p>
+      <input type="text" />
+      <button class="long green sans">Proceed to call settings</button>
       <div class="bottom-section">
         <p>I only use this for calls, don't ask me to sign in</p>
         <label class="switch">
@@ -68,9 +66,7 @@
         </p>
         <p class="label">Enter group code:</p>
         <input type="text" />
-        <button class="long green sans">
-          Proceed to call settings
-        </button>
+        <button class="long green sans" @click="callSettings">Proceed to call settings</button>
       </div>
       <button class="long outline" @click="state = 'sign'">Sign in</button>
       <button class="long outline" @click="state = 'create'">
@@ -97,10 +93,8 @@
         <p class="label">Email:</p>
         <input type="text" />
         <p class="label">Password:</p>
-        <input type="text" />
-        <button class="long black sans">
-          Continue
-        </button>
+        <input type="password" />
+        <button class="long black sans" @click="signIn">Continue</button>
       </div>
 
       <button class="long green" @click="state = 'join'">Join a call</button>
@@ -128,18 +122,12 @@
         <p class="label">Email:</p>
         <input type="text" />
         <p class="label">Password:</p>
-        <input type="text" />
-        <p class="label">Confirm password:</p>
-        <input type="text" />
-        <button class="long black sans">
-          Continue
-        </button>
+        <input type="password" />
+        <button class="long black sans" @click="createAccount">Continue</button>
       </div>
 
       <button class="long green" @click="state = 'join'">Join a call</button>
-      <button class="long outline" @click="state = 'sign'">
-        Sign in
-      </button>
+      <button class="long outline" @click="state = 'sign'">Sign in</button>
       <div class="bottom-section">
         <p>I only use this for calls, don't ask me to sign in</p>
         <label class="switch">
@@ -152,8 +140,6 @@
         </label>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -169,7 +155,6 @@ export default {
   //     Popup,
   //   },
   computed: {
-    //   ...mapGetters(["onlyCalls"]),
     onlyCalls: {
       get: function () {
         return store.getters.onlyCalls == true;
@@ -187,6 +172,17 @@ export default {
       state: "all",
     };
   },
+  methods: {
+      signIn() {
+          
+      },
+      createAccount() {
+
+      },
+      callSettings() {
+
+      }
+  }
 };
 </script>
 
@@ -228,12 +224,25 @@ export default {
     flex-direction: column;
     align-items: center;
 
+    .label {
+      @include serif;
+      color: black;
+      font-size: 24px;
+      margin-bottom: 0;
+      text-align: left;
+    }
+
     &.green-bg {
-        background-color: rgba($green, 0.5);
+      background-color: rgba($green, 0.5);
     }
 
     h2 {
-        margin-block-end: 0;
+      margin-block-end: 0;
+    }
+
+    p {
+      width: 70%;
+      font-weight: 700;
     }
 
     .long {
@@ -247,6 +256,7 @@ export default {
       &.sans {
         @include sans-serif;
         color: white;
+        margin-top: 32px;
       }
     }
 
@@ -262,17 +272,11 @@ export default {
         flex-direction: column;
         margin-top: 0;
         align-items: center;
+      }
 
-        p {
-          width: 70%;
-          font-weight: 700;
-
-          &.label {
-            @include serif;
-            color: black;
-            font-size: 24px;
-          }
-        }
+      .label {
+          text-align: center;
+          padding-bottom: 16px;
       }
     }
 
@@ -289,22 +293,9 @@ export default {
       align-items: center;
 
       .long {
-          width: 77.8%;
-      }
-
-      p {
-        width: 70%;
-        font-weight: 700;
-
-        &.label {
-          @include serif;
-          color: black;
-          font-size: 24px;
-        }
+        width: 77.8%;
       }
     }
-
-    
 
     .green {
       color: white;
@@ -325,6 +316,10 @@ export default {
       gap: 16px;
       margin-top: auto;
       width: 90%;
+
+      p {
+      width: auto;
+    }
     }
 
     .switch {
@@ -351,8 +346,13 @@ export default {
       background-color: white;
       -webkit-transition: 0.2s;
       transition: 0.2s;
+      //   border-radius: 34px;
+      //   outline: 2px solid black;
+
+      -webkit-border-radius: 34px;
+      -moz-border-radius: 34px;
       border-radius: 34px;
-      outline: 2px solid black;
+      box-shadow: 0px 0px 0px 2px black;
     }
 
     .slider:before {
@@ -394,6 +394,10 @@ export default {
       transform: translateX(44px);
       background-color: white;
     }
+  }
+
+  input[type="text"], input[type="password"] {
+    margin-bottom: 0px;
   }
 }
 </style>
