@@ -1,5 +1,16 @@
 <template>
   <div class="welcome">
+    <!-- Conditional join call popup -->
+    <popup
+      v-if="showCallSettings"
+      @triggerClose="showCallSettings = false"
+      @signIn="goTo('sign')"
+      @createAccount="goTo('create')"
+      :color="'green'"
+      :title="'Before you join...'"
+      :type="'joinCall'"
+    ></popup>
+
     <div class="left" :class="state === 'all' ? 'single' : ''">
       <img v-if="state !== 'all'" src="../assets/logo-light.svg" width="100%" />
       <img
@@ -18,7 +29,9 @@
       </p>
       <p class="label">Enter group code:</p>
       <input type="text" />
-      <button class="long green sans">Proceed to call settings</button>
+      <button class="long green sans" @click="callSettings">
+        Proceed to call settings
+      </button>
       <div class="bottom-section">
         <p>I only use this for calls, don't ask me to sign in</p>
         <label class="switch">
@@ -66,7 +79,9 @@
         </p>
         <p class="label">Enter group code:</p>
         <input type="text" />
-        <button class="long green sans" @click="callSettings">Proceed to call settings</button>
+        <button class="long green sans" @click="callSettings">
+          Proceed to call settings
+        </button>
       </div>
       <button class="long outline" @click="state = 'sign'">Sign in</button>
       <button class="long outline" @click="state = 'create'">
@@ -151,9 +166,9 @@ import { mapGetters } from "vuex";
 export default {
   name: "Welcome",
   store: store,
-  //   components: {
-  //     Popup,
-  //   },
+  components: {
+    Popup,
+  },
   computed: {
     onlyCalls: {
       get: function () {
@@ -170,19 +185,20 @@ export default {
   data() {
     return {
       state: "all",
+      showCallSettings: false,
     };
   },
   methods: {
-      signIn() {
-          
-      },
-      createAccount() {
-
-      },
-      callSettings() {
-
-      }
-  }
+    goTo(state) {
+      this.state = state;
+      this.showCallSettings = false;
+    },
+    signIn() {},
+    createAccount() {},
+    callSettings() {
+      this.showCallSettings = true;
+    },
+  },
 };
 </script>
 
@@ -275,8 +291,8 @@ export default {
       }
 
       .label {
-          text-align: center;
-          padding-bottom: 16px;
+        text-align: center;
+        padding-bottom: 16px;
       }
     }
 
@@ -318,8 +334,8 @@ export default {
       width: 90%;
 
       p {
-      width: auto;
-    }
+        width: auto;
+      }
     }
 
     .switch {
@@ -396,7 +412,8 @@ export default {
     }
   }
 
-  input[type="text"], input[type="password"] {
+  input[type="text"],
+  input[type="password"] {
     margin-bottom: 0px;
   }
 }
