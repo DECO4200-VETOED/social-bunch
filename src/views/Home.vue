@@ -70,11 +70,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "Home",
   store: store,
-  // created() {
-  //   if (!store.getters.signedIn) {
-  //     this.$router.push("/");
-  //   }
-  // },
+  created() {
+    if (!store.getters.signedIn) {
+      this.$router.push("/");
+    }
+  },
   computed: {
     ...mapGetters(["tabs", "nextTwoMeetings"]),
   },

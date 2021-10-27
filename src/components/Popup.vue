@@ -76,8 +76,10 @@ export default {
       return "../assets/" + src;
     },
     noCall() {
-      this.oops = true;
-      this.compTitle = "Oops! There’s no call now.";
+      if (this.color === "green") {
+        this.oops = true;
+        this.compTitle = "Oops! There’s no call now.";
+      }
     },
   },
   data() {

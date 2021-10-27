@@ -193,8 +193,14 @@ export default {
       this.state = state;
       this.showCallSettings = false;
     },
-    signIn() {},
-    createAccount() {},
+    signIn() {
+        store.commit('signIn')
+        this.$router.push("/home")
+    },
+    createAccount() {
+        store.commit('createAccount')
+        this.$router.push("/home")
+    },
     callSettings() {
       this.showCallSettings = true;
     },

@@ -148,6 +148,13 @@ export default new Vuex.Store({
         },
         toggleOnlyCalls(state) {
             state.data.settings.onlyCalls = !state.data.settings.onlyCalls
+        },
+        signIn(state) {
+            state.data.settings.signedIn = true
+        },
+        createAccount(state) {
+            state.data.settings.signedIn = true
+            // TODO: Would go to a create account flow??
         }
 
     },
