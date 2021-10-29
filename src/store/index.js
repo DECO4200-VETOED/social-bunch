@@ -149,6 +149,9 @@ export default new Vuex.Store({
         toggleOnlyCalls(state) {
             state.data.settings.onlyCalls = !state.data.settings.onlyCalls
         },
+        toggleShare(state) {
+            state.data.profile.sharing = !state.data.profile.sharing
+        },
         signIn(state) {
             state.data.settings.signedIn = true
         },
@@ -165,6 +168,34 @@ export default new Vuex.Store({
         members: state => state.data.members,
         signedIn: state => state.data.settings.signedIn,
         onlyCalls: state => state.data.settings.onlyCalls,
+        profileData: state => state.data.profile,
+        profileGroups: state => {
+            var groups = []
+            for (let i = 0; i < state.data.groups.length; i++) {
+                groups.push({
+                    invited: false,
+                    title: state.data.groups[i].title,
+                    icon: state.data.groups[i].icon,
+                    index: i,
+                    color: state.data.tabColors[i + 1]
+
+                })
+            }
+
+            for (let i = 0; i < state.data.invites.length; i++) {
+                groups.push({
+                    invited: true,
+                    title: state.data.invites[i].title,
+                    icon: state.data.invites[i].icon,
+                    index: i + state.data.groups.length,
+                    color: 'red'
+                })
+            }
+
+            console.log(groups)
+            return groups
+
+        },
         tabs: state => {
             let tabs = state.data.groups.map((g, index) => g[index] = {
                 text: g.title,

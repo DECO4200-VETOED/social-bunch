@@ -8,10 +8,18 @@
       :title="'Members'"
       :content="{members: groupByInd.members}"
     />
+    <popup
+      v-if="showingCall"
+      @triggerClose="showingCall = false"
+      :color="groupColor"
+      :title="'Before you join...'"
+      :type="'joinCall'"
+    />
     <folder
       :activeColor="tabColors[groupInd]"
       :groupInd="parseInt(groupInd)"
       @showMembers="showingMembers = true"
+      @showCall="showingCall = true"
     >
     </folder>
   </div>
@@ -39,6 +47,7 @@ export default {
   data() {
     return {
       showingMembers: false,
+      showingCall: false,
     };
   },
   computed: {

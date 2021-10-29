@@ -1,18 +1,30 @@
 <template>
   <div class="home">
+    <popup
+      v-if="showingCall"
+      @triggerClose="showingCall = false"
+      :color="groupColor"
+      :title="'Before you join...'"
+      :type="'joinCall'"
+    />
     <div class="home-header">
       <h1>Home</h1>
       <div class="home-nav">
-        <button><i class="fas fa-user fa-lg"></i>CONTACTS</button>
-        <button><i class="fas fa-phone fa-lg"></i>MY PROFILE</button>
+        <button @click="routePage('contacts')"><i class="fas fa-phone fa-lg"></i>CONTACTS</button>
+        <button @click="routePage('profile')"><i class="fas fa-user fa-lg"></i>MY PROFILE</button>
       </div>
     </div>
 
     <div class="row">
       <h3>Your groups</h3>
+      <div>
       <button class="long green">
         <i class="fas fa-plus fa-me"></i>Create a group
       </button>
+      <button class="long black">
+        Sign out
+      </button>
+    </div>
     </div>
 
     <div class="tile-row">
@@ -37,7 +49,7 @@
             <div class="group-key" :class="meeting.color"></div>
             <p>{{ meeting.text }}</p>
           </div>
-          <button v-if="meeting.happeningNow" class="black long join-call">
+          <button v-if="meeting.happeningNow" class="black long join-call" @click="joinCall(meeting.color)">
             Join call
           </button>
           <div v-else class="rsvp-row">
@@ -66,21 +78,36 @@
 <script>
 import store from "../store/index.js";
 import { mapGetters } from "vuex";
+import Popup from "../components/Popup.vue";
 
 export default {
   name: "Home",
   store: store,
+  components: {Popup},
   created() {
     if (!store.getters.signedIn) {
       this.$router.push("/");
     }
   },
+  data() {
+    return {
+      showingCall: false,
+      groupColor: null,
+    };
+  },
   computed: {
     ...mapGetters(["tabs", "nextTwoMeetings"]),
   },
   methods: {
+    joinCall(color) {
+      this.groupColor = color
+      this.showingCall = true
+    },
     route(num) {
       this.$router.push(`/group/${num}`);
+    },
+    routePage(route) {
+      this.$router.push(`/${route}`);
     },
     triggerRSVP(button, meeting) {
       if (meeting.response == button) {
@@ -218,6 +245,11 @@ h4 {
   button {
     width: 350px;
     margin: 0;
+
+    &.black {
+      width: 200px;
+      margin-left: 16px;
+    }
   }
 }
 

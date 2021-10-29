@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Welcome from '../views/Welcome.vue'
 import Group from '../views/Group.vue'
-import store from "../store/index.js";
+import Profile from '../views/Profile.vue'
 
 
 Vue.use(VueRouter)
@@ -17,6 +17,11 @@ const routes = [{
     path: '/',
     name: 'Welcome',
     component: Welcome,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
   // {
   //   path: '/group',

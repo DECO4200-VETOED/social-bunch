@@ -6,7 +6,7 @@
         :key="index"
         class="tab"
         :class="tab.color + isActive(index)"
-        @click="route(index)"
+        @click="routeGroup(index)"
       >
         <span
           ><p>{{ tab.text }}</p></span
@@ -15,16 +15,29 @@
     </div>
     <div class="folder-area" :class="activeColor">
       <div class="folder-header" :class="activeColor">
-        <h1>{{title}}</h1>
+        <h1>{{ title }}</h1>
         <div class="folder-nav">
-          <button><i class="fas fa-user fa-lg"></i>CONTACTS</button>
-          <button><i class="fas fa-phone fa-lg"></i>MY PROFILE</button>
+          <button :class="contacts ? 'active' : ''" @click="routePage('contacts')">
+            <i class="fas fa-phone fa-lg"></i>CONTACTS
+          </button>
+          <button :class="profile ? 'active' : ''" @click="routePage('profile')">
+            <i class="fas fa-user fa-lg"></i>MY PROFILE
+          </button>
           <button class="info"><i class="fas fa-info fa-lg"></i></button>
         </div>
       </div>
 
       <!-- CONDITIONALLY INSERT OTHER COMPONENTS HERE BASED ON CURRENT PAGE -->
-      <group v-if="groupInd != null" :groupInd="groupInd" @showMembers="$emit('showMembers')"></group>
+      <group
+        v-if="groupInd != null"
+        :groupInd="groupInd"
+        @showMembers="$emit('showMembers')"
+        @showCall="$emit('showCall')"
+      ></group>
+
+      <profile
+        v-if="profile"
+      ></profile>
 
     </div>
   </div>
@@ -33,28 +46,34 @@
 <script>
 import store from "../store/index.js";
 import Group from "./Group.vue";
+import Profile from "../components/Profile.vue";
 import { mapGetters } from "vuex";
 
 export default {
   name: "Folder",
   components: {
     Group,
+    Profile,
   },
   store: store,
   props: {
     activeColor: String,
+    manualTitle: String,
     groupInd: Number,
+    contacts: Boolean,
+    profile: Boolean,
   },
   computed: {
     ...mapGetters(["tabs"], ["tabColors"]),
     title() {
       if (this.groupInd != null) {
-        return this.$store.state.data.groups[this.groupInd - 1].title
+        return this.$store.state.data.groups[this.groupInd - 1].title;
       }
+      return this.manualTitle;
     },
   },
   methods: {
-    route(index) {
+    routeGroup(index) {
       if (index == this.groupInd) {
         return;
       } else if (index == 0) {
@@ -63,14 +82,20 @@ export default {
         this.$router.push(`/group/${index}`);
       }
     },
+    routePage(route) {
+      if ((route === 'profile' && this.profile) || (route === 'contacts' && this.contacts)) {
+        return
+      }
+        this.$router.push(`/${route}`);
+
+    },
     isActive(index) {
       if (this.groupInd == index) {
-        return " active"
+        return " active";
       }
 
-      return ""
-
-    }
+      return "";
+    },
   },
 };
 </script>
@@ -101,60 +126,58 @@ export default {
   align-items: flex-end;
   justify-content: flex-start;
 
-
   overflow-x: hidden;
   overflow-y: scroll;
 
   .tab {
-  z-index: 10;
-  margin: 8px 0;
-  min-height: 200px;
-  width: 48px;
-  border-radius: 8px 0 0 8px;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;
-  display: flex;
-  cursor: pointer;
+    z-index: 10;
+    margin: 8px 0;
+    min-height: 200px;
+    width: 48px;
+    border-radius: 8px 0 0 8px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    cursor: pointer;
 
-  // overflow: hidden;
+    // overflow: hidden;
 
-  span {
-    height: 160px;
-    padding-top: 20px;
+    span {
+      height: 160px;
+      padding-top: 20px;
+    }
+
+    p {
+      writing-mode: vertical-rl;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: inline-block;
+      overflow: hidden;
+      height: 160px;
+      transform: rotate(180deg);
+    }
+
+    &.green {
+      background-color: $green;
+    }
+
+    &.blue {
+      background-color: $blue;
+    }
+
+    &.orange {
+      background-color: $orange;
+    }
+
+    &.yellow {
+      background-color: $yellow;
+    }
+
+    &.active {
+      width: 56px;
+    }
   }
-
-  p {
-    writing-mode: vertical-rl;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    display: inline-block;
-    overflow: hidden;
-    height: 160px;
-    transform: rotate(180deg);
-  }
-
-  &.green {
-    background-color: $green;
-  }
-
-  &.blue {
-    background-color: $blue;
-  }
-
-  &.orange {
-    background-color: $orange;
-  }
-
-  &.yellow {
-    background-color: $yellow;
-  }
-
-  &.active {
-    width: 56px;
-
-  }
-}
 }
 
 .folder-area {
@@ -175,6 +198,10 @@ export default {
 
   &.yellow {
     border-color: $yellow;
+  }
+
+  &.bg {
+    border-color: $bg-color;
   }
 
   h1 {
@@ -200,18 +227,22 @@ export default {
     background-color: $bg-color;
     cursor: pointer;
     margin-left: 20px;
-  }
 
-  button.info {
-    color: white;
-    background-color: $green;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    text-align: center;
-    
-    .fas {
-      margin: 0 auto;
+    &.info {
+      color: white;
+      background-color: $green;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      text-align: center;
+
+      .fas {
+        margin: 0 auto;
+      }
+    }
+
+    &.active {
+      border-bottom: 6px solid $green;
     }
   }
 }
@@ -241,8 +272,10 @@ export default {
   &.green {
     border-color: $green;
   }
+
+  &.bg {
+    border-color: $bg-color;
+  }
 }
-
-
 </style>
 

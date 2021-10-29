@@ -38,7 +38,7 @@
         <h3>{{ group.nextMeeting.time }}</h3>
       </div>
       <button class="long" :class="groupColor">See who's responded</button>
-      <button class="long black">Join call</button>
+      <button class="long black" @click="$emit('showCall')">Join call</button>
     </div>
 
     <div class="right">

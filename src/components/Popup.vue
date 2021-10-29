@@ -35,7 +35,8 @@
           You'll be able to change these options with in-built zoom settings
           once you dial into the call.
         </p>
-        <button class="long green sans" @click="noCall">Dial me in!</button>
+        <button v-if="color === 'green'" class="long green sans" @click="noCall">Dial me in!</button>
+        <button v-else class="long green sans">Dial me in!</button>
       </div>
 
       <!-- Oops no call now modal menu content -->
