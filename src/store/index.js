@@ -161,6 +161,19 @@ export default new Vuex.Store({
         },
         leaveGroup(state, index) {
             state.data.groups.splice(index, 1)
+        },
+        joinGroup(state, index) {
+            console.log(index, state.data.groups, state.data.invites, index - state.data.groups.length)
+            state.data.groups.push(state.data.invites[index - state.data.groups.length])
+            console.log(index, state.data.groups, state.data.invites, index - state.data.groups.length)
+
+            state.data.invites.splice(index - (state.data.groups.length - 1), 1)
+            console.log(index, state.data.groups, state.data.invites, index - state.data.groups.length)
+
+
+        },
+        declineInvite(state, index) {
+            state.data.invites.splice(index - state.data.groups.length - 1, 1)
         }
 
     },
@@ -215,9 +228,8 @@ export default new Vuex.Store({
         },
         tabColors: state => state.data.tabColors,
         groupByInd: (state) => (ind) => {
-            console.log(ind)
-            if (ind > state.data.groups.length) {
-                return state.data.invites[ind - state.data.groups.length + 1]
+            if (ind >= state.data.groups.length + 1) {
+                return state.data.invites[ind - state.data.groups.length - 1]
 
             }
             return state.data.groups[ind - 1]

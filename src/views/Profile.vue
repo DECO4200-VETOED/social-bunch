@@ -19,14 +19,20 @@
     <popup
       v-if="joinGroup != null"
       @triggerClose="joinGroup = null"
+      @joinGroup="processJoin()"
       :color="'green'"
       :type="'joinGroup'"
+      :title="`Are you sure you want to accept your invite to join ${$store.getters.groupByInd(joinGroup + 1).title}?`"
+      :content="{index: joinGroup}"
     />
     <popup
       v-if="declineInvite != null"
       @triggerClose="declineInvite = null"
+      @declineInvite="processDecline()"
       :color="'green'"
       :type="'decline'"
+      :title="`Are you sure you want to decline your invite to join ${$store.getters.groupByInd(declineInvite + 1).title}?`"
+      :content="{index: declineInvite}"
     />
     <folder
       :manualTitle="'My profile'"
@@ -72,7 +78,15 @@ export default {
     processLeave() {
       store.commit('leaveGroup', this.leaveGroup)
       this.leaveGroup = null
-    }
+    },
+    processJoin() {
+      store.commit('joinGroup', this.joinGroup)
+      this.joinGroup = null
+    },
+    processDecline() {
+      store.commit('declineInvite', this.declineInvite)
+      this.declineInvite = null
+    },
   }
 };
 </script>

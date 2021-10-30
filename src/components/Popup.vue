@@ -5,6 +5,34 @@
       <i class="fas fa-times close fa-3x" @click="$emit('triggerClose')"></i>
       <hr />
 
+      <!-- Join group modal menu content -->
+      <div v-if="type === 'joinGroup'" class="modal-child join-group">
+        <div class="vertical-center">
+          <p>Members of this group will be able to see that you're in it, and any details you choose to share will be available to these members.</p>
+        </div>
+        <div class="button-row">
+          
+          <button class="long red" @click="$emit('triggerClose')">NO, NOT YET</button>
+          <button class="long green" @click="$emit('joinGroup', content.id)">
+            YES, JOIN
+          </button>
+        </div>
+      </div>
+
+      <!-- Decline invite modal menu content -->
+      <div v-if="type === 'decline'" class="modal-child decline">
+        <div class="vertical-center">
+          <p>You will need to be re-invited to join this group.</p>
+        </div>
+        <div class="button-row">
+          <button class="long red" @click="$emit('declineInvite', content.id)">
+            DECLINE INVITE
+          </button>
+          <button class="long green" @click="$emit('triggerClose')">NO, NOT YET</button>
+          
+        </div>
+      </div>
+
       <!-- Leave group modal menu content -->
       <div v-if="type === 'leave'" class="modal-child leave">
         <div class="vertical-center">
@@ -309,7 +337,7 @@ img {
 }
 
 .oops,
-.leave {
+.leave, .join-group, .decline {
   width: 90%;
   margin: 16px auto 0;
 
