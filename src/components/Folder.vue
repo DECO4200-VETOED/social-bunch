@@ -38,7 +38,9 @@
       <profile
         v-if="profile"
         @changingPassword="$emit('changingPassword')"
-
+        @leaveGroup="value => $emit('leaveGroup', value)"
+        @joinGroup="value => $emit('joinGroup', value)"
+        @declineInvite="value => $emit('declineInvite', value)"
       ></profile>
 
     </div>

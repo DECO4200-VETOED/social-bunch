@@ -5,6 +5,8 @@
 ///// Colour variables /////
 
 $bg-color: #FAF6F1;
+$red: #DB4242;
+
 $orange: #F9A27D;
 $yellow: #F9D07E;
 $blue: #B8D5DB;
@@ -20,6 +22,15 @@ $green: #3DA194;
 @mixin sans-serif {
     font-family: 'Open sans', sans-serif;
     color: black;
+}
+
+///// Utility classes /////
+.vertical-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+
 }
 
 ///// Default HTML styling /////
@@ -125,6 +136,11 @@ button {
 
     &.green {
         background-color: $green;
+        color: white;
+    }
+
+    &.red {
+        background-color: $red;
         color: white;
     }
 

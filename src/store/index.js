@@ -158,6 +158,9 @@ export default new Vuex.Store({
         createAccount(state) {
             state.data.settings.signedIn = true
             // TODO: Would go to a create account flow??
+        },
+        leaveGroup(state, index) {
+            state.data.groups.splice(index, 1)
         }
 
     },
@@ -212,23 +215,33 @@ export default new Vuex.Store({
         },
         tabColors: state => state.data.tabColors,
         groupByInd: (state) => (ind) => {
-            return state.data.groups[ind-1]
+            console.log(ind)
+            if (ind > state.data.groups.length) {
+                return state.data.invites[ind - state.data.groups.length + 1]
+
+            }
+            return state.data.groups[ind - 1]
+
         },
         colorByGroup: (state) => (ind) => {
             return state.data.tabColors[ind]
         },
         nextTwoMeetings: state => {
             let meetings = []
+            let lesser = 2
+            if (state.data.groups.length < 2) {
+                lesser = state.data.groups.length
+            }
 
-            for (let i = 0; i < 2; i++) {
+            for (let i = 0; i < lesser; i++) {
                 meetings.push({
                     text: state.data.groups[i].title + ": " + state.data.groups[i].nextMeeting.time,
-                    color: state.data.tabColors[i+1],
+                    color: state.data.tabColors[i + 1],
                     happeningNow: state.data.groups[i].nextMeeting.happeningNow,
                     response: state.data.groups[i].nextMeeting.response,
                     groupInd: i + 1
                 })
-                
+
             }
 
             console.log(meetings)

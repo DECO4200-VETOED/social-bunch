@@ -43,13 +43,13 @@
             />
             <p v-if="!editing && group.invited"><em>Pending invite</em></p>
           </div>
-          <button v-if="editing && !group.invited" class="long black">
+          <button v-if="editing && !group.invited" class="long black" @click="$emit('leaveGroup', group.index)">
             LEAVE GROUP
           </button>
-          <button v-if="editing && group.invited" class="long green">
+          <button v-if="editing && group.invited" class="long green" @click="$emit('joinGroup', group.index)">
             JOIN GROUP
           </button>
-          <button v-if="editing && group.invited" class="long black">
+          <button v-if="editing && group.invited" class="long black" @click="$emit('declineInvite', group.index)">
             DECLINE
           </button>
         </div>

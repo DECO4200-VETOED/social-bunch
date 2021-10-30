@@ -5,6 +5,19 @@
       <i class="fas fa-times close fa-3x" @click="$emit('triggerClose')"></i>
       <hr />
 
+      <!-- Leave group modal menu content -->
+      <div v-if="type === 'leave'" class="modal-child leave">
+        <div class="vertical-center">
+          <p>You will need to be re-invited to join again.</p>
+        </div>
+        <div class="button-row">
+          <button class="long red" @click="$emit('leaveGroup', content.id)">
+            YES, LEAVE
+          </button>
+          <button class="long green" @click="$emit('triggerClose')">NO, STAY</button>
+        </div>
+      </div>
+
       <!-- Change Password modal menu content -->
       <div
         v-if="type === 'password' && !confirmPassword"
@@ -295,7 +308,8 @@ img {
   }
 }
 
-.oops {
+.oops,
+.leave {
   width: 90%;
   margin: 16px auto 0;
 
@@ -326,7 +340,10 @@ img {
 
     .long {
       flex: 1;
-      @include serif;
+
+      &.outline {
+        @include serif;
+      }
     }
   }
 }
