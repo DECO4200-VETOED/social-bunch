@@ -33,6 +33,7 @@
         :groupInd="groupInd"
         @showMembers="$emit('showMembers')"
         @showCall="$emit('showCall')"
+        @showGoing="$emit('showGoing')"
       ></group>
 
       <profile

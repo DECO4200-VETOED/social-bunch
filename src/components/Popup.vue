@@ -5,14 +5,41 @@
       <i class="fas fa-times close fa-3x" @click="$emit('triggerClose')"></i>
       <hr />
 
+      <!-- Who's going popup content -->
+      <div v-if="type === 'going'" class="modal-child going">
+        <div class="left-column">
+          <h3>Not responded</h3>
+          <p v-for="(name, index) in content.unsure" :key="index">{{ name }}</p>
+        </div>
+        <div class="right-column">
+          <h3>Responded</h3>
+          <div v-for="(name, index) in content.yes" :key="`yes ${index}`" class="row">
+            <p>{{ name }}</p>
+            <div class="circle" :class="color">
+              <i class="fas fa-thumbs-up fa-2x"></i>
+            </div>
+          </div>
+          <div v-for="(name, index) in content.no" :key="`no ${index}`" class="row">
+            <p>{{ name }}</p>
+            <div class="circle">
+              <i class="fas fa-thumbs-down fa-2x"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Join group modal menu content -->
       <div v-if="type === 'joinGroup'" class="modal-child join-group">
         <div class="vertical-center">
-          <p>Members of this group will be able to see that you're in it, and any details you choose to share will be available to these members.</p>
+          <p>
+            Members of this group will be able to see that you're in it, and any
+            details you choose to share will be available to these members.
+          </p>
         </div>
         <div class="button-row">
-          
-          <button class="long red" @click="$emit('triggerClose')">NO, NOT YET</button>
+          <button class="long red" @click="$emit('triggerClose')">
+            NO, NOT YET
+          </button>
           <button class="long green" @click="$emit('joinGroup', content.id)">
             YES, JOIN
           </button>
@@ -28,8 +55,9 @@
           <button class="long red" @click="$emit('declineInvite', content.id)">
             DECLINE INVITE
           </button>
-          <button class="long green" @click="$emit('triggerClose')">NO, NOT YET</button>
-          
+          <button class="long green" @click="$emit('triggerClose')">
+            NO, NOT YET
+          </button>
         </div>
       </div>
 
@@ -42,7 +70,9 @@
           <button class="long red" @click="$emit('leaveGroup', content.id)">
             YES, LEAVE
           </button>
-          <button class="long green" @click="$emit('triggerClose')">NO, STAY</button>
+          <button class="long green" @click="$emit('triggerClose')">
+            NO, STAY
+          </button>
         </div>
       </div>
 
@@ -337,7 +367,9 @@ img {
 }
 
 .oops,
-.leave, .join-group, .decline {
+.leave,
+.join-group,
+.decline {
   width: 90%;
   margin: 16px auto 0;
 
@@ -371,6 +403,64 @@ img {
 
       &.outline {
         @include serif;
+      }
+    }
+  }
+}
+
+.going {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  text-align: left;
+
+  p {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .left-column {
+    flex: 1;
+    border-right: 2px solid black;
+    padding-right: 5%;
+  }
+
+  .right-column {
+    flex: 1;
+    padding-left: 5%;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .circle {
+      border: 2px solid black;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+
+      &.blue {
+        background-color: $blue;
+      }
+
+      &.orange {
+        background-color: $orange;
+      }
+
+      &.yellow {
+        background-color: $yellow;
+      }
+
+      &.green {
+        background-color: $green;
       }
     }
   }

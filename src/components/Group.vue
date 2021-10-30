@@ -29,7 +29,7 @@
           <h4>No</h4>
         </div>
       </div>
-      <button class="long" :class="groupColor">See who's responded</button>
+      <button class="long" :class="groupColor" @click="$emit('showGoing')">See who's responded</button>
     </div>
 
     <div v-else class="left">
@@ -37,7 +37,7 @@
         <h4>Your current meeting started at</h4>
         <h3>{{ group.nextMeeting.time }}</h3>
       </div>
-      <button class="long" :class="groupColor">See who's responded</button>
+      <button class="long" :class="groupColor" @click="$emit('showGoing')">See who's responded</button>
       <button class="long black" @click="$emit('showCall')">Join call</button>
     </div>
 

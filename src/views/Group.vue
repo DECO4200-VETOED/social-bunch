@@ -15,11 +15,20 @@
       :title="'Before you join...'"
       :type="'joinCall'"
     />
+    <popup
+      v-if="showingGoing"
+      @triggerClose="showingGoing = false"
+      :color="groupColor"
+      title="Who's going?"
+      :type="'going'"
+      :content="getAttendance"
+    />
     <folder
       :activeColor="tabColors[groupInd]"
       :groupInd="parseInt(groupInd)"
       @showMembers="showingMembers = true"
       @showCall="showingCall = true"
+      @showGoing="showingGoing = true"
     >
     </folder>
   </div>
@@ -48,6 +57,7 @@ export default {
     return {
       showingMembers: false,
       showingCall: false,
+      showingGoing: false,
     };
   },
   computed: {
@@ -61,6 +71,21 @@ export default {
     groupColor() {
       return store.getters.colorByGroup(this.groupInd);
     },
+    getAttendance() {
+      let attendance = {yes: [], no: [], unsure: []}
+      let responses = this.groupByInd.nextMeeting.responses
+      for (let i = 0; i < responses.length; i++) {
+        if (responses[i].attending == null) {
+          attendance.unsure.push(responses[i].name)
+        } else if (responses[i].attending) {
+          attendance.yes.push(responses[i].name)
+        } else {
+          attendance.no.push(responses[i].name)
+        }
+      }
+
+      return attendance
+    }
   },
 };
 </script>
