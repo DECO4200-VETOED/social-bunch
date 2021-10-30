@@ -1,5 +1,19 @@
 <template>
-  <div class="home">
+<div v-if="tabs.length < 2">
+  <div class="home-header">
+      <h1>Home</h1>
+      <div class="home-nav">
+        <button @click="routePage('contacts')"><i class="fas fa-phone fa-lg"></i>CONTACTS</button>
+        <button @click="routePage('profile')"><i class="fas fa-user fa-lg"></i>MY PROFILE</button>
+      </div>
+    </div>
+  <div class="vertical-center">
+    <p>Join or create a group to get started with Social Bunch!</p>
+    </div>
+      <div class="circle" @click="route()"></div>
+
+</div>
+  <div v-else class="home">
     <popup
       v-if="showingCall"
       @triggerClose="showingCall = false"
