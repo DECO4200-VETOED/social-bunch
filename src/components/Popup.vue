@@ -5,6 +5,47 @@
       <i class="fas fa-times close fa-3x" @click="$emit('triggerClose')"></i>
       <hr />
 
+      <!-- Change Password modal menu content -->
+      <div
+        v-if="type === 'password' && !confirmPassword"
+        class="modal-child password"
+      >
+        <div>
+          <h4 class="label">Confirm your current password:</h4>
+          <span
+            ><input type="password" />
+            <h3>*</h3></span
+          >
+        </div>
+        <button class="long green sans" @click="confirmPassword = true">
+          Next
+        </button>
+      </div>
+
+      <!-- Change Password modal menu content -->
+      <div
+        v-if="type === 'password' && confirmPassword"
+        class="modal-child password"
+      >
+        <div>
+          <h4 class="label">Enter your new password:</h4>
+          <span
+            ><input type="password" />
+            <h3>*</h3></span
+          >
+        </div>
+        <div>
+          <h4 class="label">Confirm your new password:</h4>
+          <span
+            ><input type="password" />
+            <h3>*</h3></span
+          >
+        </div>
+        <button class="long green sans" @click="$emit('triggerClose')">
+          Save changes
+        </button>
+      </div>
+
       <!-- Members modal menu content -->
       <div v-if="type === 'members'" class="modal-child members">
         <div
@@ -35,7 +76,13 @@
           You'll be able to change these options with in-built zoom settings
           once you dial into the call.
         </p>
-        <button v-if="color === 'green'" class="long green sans" @click="noCall">Dial me in!</button>
+        <button
+          v-if="color === 'green'"
+          class="long green sans"
+          @click="noCall"
+        >
+          Dial me in!
+        </button>
         <button v-else class="long green sans">Dial me in!</button>
       </div>
 
@@ -88,6 +135,7 @@ export default {
       video: false,
       voice: false,
       oops: false,
+      confirmPassword: false,
       compTitle: this.title,
     };
   },
@@ -172,6 +220,15 @@ h2 {
   top: 18px;
   right: 24px;
   cursor: pointer;
+}
+
+///// Password Popup Styles /////
+.password {
+  padding: 0 15%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 ///// Members Popup Styles /////
@@ -271,6 +328,23 @@ img {
       flex: 1;
       @include serif;
     }
+  }
+}
+
+input[type="password"] {
+  margin-top: 8px;
+  width: 100%;
+}
+
+span {
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  h3 {
+    color: red;
   }
 }
 </style>

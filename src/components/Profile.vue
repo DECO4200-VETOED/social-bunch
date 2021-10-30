@@ -24,7 +24,7 @@
             <i v-if="profileData.sharing" class="fa fa-check fa-2x"></i>
           </button>
         </div>
-        <button class="long green">Change password</button>
+        <button class="long green" @click="$emit('changingPassword')">Change password</button>
       </div>
     </div>
     <div class="profile-bottom">

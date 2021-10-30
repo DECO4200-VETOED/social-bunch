@@ -37,6 +37,8 @@
 
       <profile
         v-if="profile"
+        @changingPassword="$emit('changingPassword')"
+
       ></profile>
 
     </div>
