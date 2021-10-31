@@ -34,6 +34,7 @@
         @showMembers="$emit('showMembers')"
         @showCall="$emit('showCall')"
         @showGoing="$emit('showGoing')"
+        @showInvites="$emit('showInvites')"
       ></group>
 
       <profile

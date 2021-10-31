@@ -5,6 +5,33 @@
       <i class="fas fa-times close fa-3x" @click="$emit('triggerClose')"></i>
       <hr />
 
+      <!-- Invite members emails popup content -->
+      <div v-if="type === 'invite' && inviteMembers" class="modal-child emails">
+        <p>Enter the emails of the members you would like to join your group</p>
+        <div class="email-list">
+          <div v-for="(email, index) in invites" :key="index" class="row">
+            <h4 class="label">{{`Email ${index + 1}:`}}</h4>
+            <input type="text" v-model="invites[index]" />
+          </div>
+        </div>
+        <button class="long green" @click="$emit('triggerClose')">
+          Invite members
+        </button>
+      </div>
+
+      <!-- Invite members message popup content -->
+      <div v-else-if="type === 'invite'" class="modal-child invite">
+        <p>
+          Invitees will automatically receive the message below via email or, if
+          they have APP, via a notification on their APP home page - you can
+          click in the box to edit it.
+        </p>
+        <textarea />
+        <button class="long green" @click="inviteMembers = true">
+          Continue to member selection
+        </button>
+      </div>
+
       <!-- Who's going popup content -->
       <div v-if="type === 'going'" class="modal-child going">
         <div class="left-column">
@@ -13,13 +40,21 @@
         </div>
         <div class="right-column">
           <h3>Responded</h3>
-          <div v-for="(name, index) in content.yes" :key="`yes ${index}`" class="row">
+          <div
+            v-for="(name, index) in content.yes"
+            :key="`yes ${index}`"
+            class="row"
+          >
             <p>{{ name }}</p>
             <div class="circle" :class="color">
               <i class="fas fa-thumbs-up fa-2x"></i>
             </div>
           </div>
-          <div v-for="(name, index) in content.no" :key="`no ${index}`" class="row">
+          <div
+            v-for="(name, index) in content.no"
+            :key="`no ${index}`"
+            class="row"
+          >
             <p>{{ name }}</p>
             <div class="circle">
               <i class="fas fa-thumbs-down fa-2x"></i>
@@ -206,8 +241,10 @@ export default {
       video: false,
       voice: false,
       oops: false,
+      inviteMembers: false,
       confirmPassword: false,
       compTitle: this.title,
+      invites: [[], [], [], [], []],
     };
   },
 };
@@ -226,6 +263,24 @@ h2 {
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+}
+
+.emails {
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 16px;
+    .label {
+      margin: 0;
+    }
+  }
+
+  .email-list {
+    max-height: 60%;
+    overflow: scroll;
+
+  }
 }
 
 ///// Popups /////
@@ -369,7 +424,8 @@ img {
 .oops,
 .leave,
 .join-group,
-.decline {
+.decline,
+.invite, .emails {
   width: 90%;
   margin: 16px auto 0;
 
@@ -405,6 +461,13 @@ img {
         @include serif;
       }
     }
+  }
+
+  textarea {
+    resize: none;
+    height: 40%;
+    @include sans-serif;
+    font-size: 19px;
   }
 }
 

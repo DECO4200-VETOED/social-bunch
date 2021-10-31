@@ -1,6 +1,13 @@
 <template>
   <div class="group">
     <popup
+      v-if="showingInvites"
+      @triggerClose="showingInvites = false"
+      :color="groupColor"
+      title="Invite members"
+      :type="'invite'"
+    />
+    <popup
       v-if="showingMembers"
       @triggerClose="showingMembers = false"
       :color="groupColor"
@@ -29,6 +36,7 @@
       @showMembers="showingMembers = true"
       @showCall="showingCall = true"
       @showGoing="showingGoing = true"
+      @showInvites="showingInvites = true"
     >
     
     </folder>
@@ -59,6 +67,7 @@ export default {
       showingMembers: false,
       showingCall: false,
       showingGoing: false,
+      showingInvites: false,
     };
   },
   computed: {
