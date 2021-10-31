@@ -24,6 +24,24 @@ $green: #3DA194;
     color: black;
 }
 
+@mixin backgrounds {
+    &.green {
+    background-color: $green;
+    }
+
+    &.blue {
+        background-color: $blue;
+    }
+
+    &.orange {
+        background-color: $orange;
+    }
+
+    &.yellow {
+        background-color: $yellow;
+    }
+}
+
 ///// Utility classes /////
 .vertical-center {
     display: flex;

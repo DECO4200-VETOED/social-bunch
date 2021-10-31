@@ -207,10 +207,6 @@ export default {
     font-weight: 700;
   }
 
-  button {
-    // background-color: transparent;
-  }
-
   &.blue {
     background-color: $blue;
   }

@@ -47,10 +47,20 @@ export default new Vuex.Store({
                         telephone: "0411232343",
                         email: "betty.a23@gmail.com"
                     }, {
+                        name: "Alice Thwaites",
+                        avatar: "avatar-placeholder.png",
+                        telephone: "0411232367",
+                        email: "alicethw3@gmail.com"
+                    }, {
                         name: "Doris Byrne",
                         avatar: "avatar-placeholder.png",
                         telephone: "0411222333",
                         email: "dbyrne@gmail.com"
+                    }, {
+                        name: "Karen Charles",
+                        avatar: "avatar-placeholder.png",
+                        telephone: "0412989113",
+                        email: "karenc@gmail.com"
                     }],
                 },
                 {
@@ -81,6 +91,11 @@ export default new Vuex.Store({
                         avatar: "avatar-placeholder.png",
                         telephone: "0411232343",
                         email: "betty.a23@gmail.com"
+                    }, {
+                        name: "Melissa Kravitz",
+                        avatar: "avatar-placeholder.png",
+                        telephone: "0484272325",
+                        email: "mkrav@gmail.com"
                     }, {
                         name: "Doris Byrne",
                         avatar: "avatar-placeholder.png",
@@ -185,6 +200,40 @@ export default new Vuex.Store({
         signedIn: state => state.data.settings.signedIn,
         onlyCalls: state => state.data.settings.onlyCalls,
         profileData: state => state.data.profile,
+        contacts: state => {
+            let contacts = []
+            let index = 0
+            for (let i = 0; i < state.data.groups.length; i++) {
+                for (let j = 0; j < state.data.groups[i].members.length; j++) {
+                    if (!contacts.filter(e => e.email === state.data.groups[i].members[j].email).length > 0) {
+                        contacts.push(state.data.groups[i].members[j])
+                        Vue.set(contacts[contacts.length - 1], 'icons', [state.data.groups[i].icon])
+                        Vue.set(contacts[contacts.length - 1], 'groups', [{
+                            title: state.data.groups[i].title,
+                            color: state.data.tabColors[i + 1]
+                        }])
+                        Vue.set(contacts[contacts.length - 1], 'color', state.data.tabColors[i + 1])
+                        Vue.set(contacts[contacts.length - 1], 'id', index)
+                        index += 1
+
+                    } else {
+                        contacts[contacts.filter(e => e.email === state.data.groups[i].members[j].email)[0].id].icons.push(state.data.groups[i].icon)
+                        contacts[contacts.filter(e => e.email === state.data.groups[i].members[j].email)[0].id].groups.push({
+                            title: state.data.groups[i].title,
+                            color: state.data.tabColors[i + 1]
+                        })
+                    }
+                }
+            }
+
+            contacts.sort(function compare(a, b) {
+                return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0;
+            })
+
+            console.log(contacts)
+
+            return contacts
+        },
         profileGroups: state => {
             var groups = []
             for (let i = 0; i < state.data.groups.length; i++) {

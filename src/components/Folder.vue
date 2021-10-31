@@ -44,6 +44,10 @@
         @declineInvite="value => $emit('declineInvite', value)"
       ></profile>
 
+      <contacts
+        v-if="contacts"
+      ></contacts>
+
     </div>
   </div>
 </template>
@@ -52,6 +56,7 @@
 import store from "../store/index.js";
 import Group from "./Group.vue";
 import Profile from "../components/Profile.vue";
+import Contacts from "../components/Contacts.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -59,6 +64,7 @@ export default {
   components: {
     Group,
     Profile,
+    Contacts
   },
   store: store,
   props: {

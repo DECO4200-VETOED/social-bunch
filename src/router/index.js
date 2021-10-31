@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Welcome from '../views/Welcome.vue'
 import Group from '../views/Group.vue'
 import Profile from '../views/Profile.vue'
+import Contacts from '../views/Contacts.vue'
 
 
 Vue.use(VueRouter)
@@ -22,6 +23,11 @@ const routes = [{
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/contacts',
+    name: 'Contacts',
+    component: Contacts
   },
   // {
   //   path: '/group',

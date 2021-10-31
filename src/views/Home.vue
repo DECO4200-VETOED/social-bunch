@@ -267,35 +267,6 @@ h4 {
   }
 }
 
-// .home-area {
-//   background-color: $bg-color;
-//   width: 100%;
-//   height: 100%;
-//   border-left-style: solid;
-//   border-left-width: 5px;
-//   max-width: calc(100% - 69px);
-
-//   &.blue {
-//     border-color: $blue;
-//   }
-
-//   &.orange {
-//     border-color: $orange;
-//   }
-
-//   &.yellow {
-//     border-color: $yellow;
-//   }
-
-//   h1 {
-//     text-align: left;
-//     white-space: nowrap;
-//     text-overflow: ellipsis;
-//     overflow: hidden;
-//     margin-block: 30px;
-//   }
-// }
-
 .home-nav {
   min-width: 350px;
   display: flex;
