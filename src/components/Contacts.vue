@@ -262,7 +262,7 @@ hr {
 
     .scroll-list {
       margin-left: 60px;
-      margin-right: 30px;
+    //   margin-right: 30px;
     }
   }
 }

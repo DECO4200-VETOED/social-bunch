@@ -42,7 +42,7 @@
         <button class="long green" @click="routePage('create')">
           <i class="fas fa-plus fa-me"></i>Create a group
         </button>
-        <button class="long black">Sign out</button>
+        <button class="long black" @click="signOut">Sign out</button>
       </div>
     </div>
 
@@ -162,6 +162,10 @@ export default {
           button;
       }
     },
+    signOut() {
+      store.commit('signOut')
+      this.$router.push('/')
+    }
   },
 };
 </script>
@@ -266,10 +270,12 @@ h4 {
 }
 
 .tile-row {
-  margin: 0 60px;
+  padding: 0 60px;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   gap: 30px;
+  overflow-x: scroll;
 }
 
 .tile {

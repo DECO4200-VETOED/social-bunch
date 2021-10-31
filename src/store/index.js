@@ -162,6 +162,9 @@ export default new Vuex.Store({
                 }],
             })
         },
+        signOut(state) {
+            state.data.settings.signedIn = false
+        },
         toggleOnlyCalls(state) {
             state.data.settings.onlyCalls = !state.data.settings.onlyCalls
         },
