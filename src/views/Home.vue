@@ -13,6 +13,12 @@
     </div>
     <div class="vertical-center">
       <p>Join or create a group to get started with Social Bunch!</p>
+      <div class="row" style="width: 60%; margin: 30px auto;">
+        <button class="long green" @click="routePage('create')">
+          <i class="fas fa-plus fa-me"></i>Create a group
+        </button>
+        <button class="long black" @click="signOut">Sign out</button>
+      </div>
     </div>
     <div class="circle" @click="route()"></div>
   </div>
