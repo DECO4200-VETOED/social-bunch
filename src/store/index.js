@@ -204,12 +204,14 @@ export default new Vuex.Store({
                     location: null,
                     responses: []
                 },
-                members: [{
-                    name: state.data.profile.name,
-                    avatar: state.data.profile.avatar,
-                    telephone: state.data.profile.telephone,
-                    email: state.data.profile.email
-                } ]
+                members: [
+                // {
+                //     name: state.data.profile.name,
+                //     avatar: state.data.profile.avatar,
+                //     telephone: state.data.profile.telephone,
+                //     email: state.data.profile.email
+                // }
+            ]
             }
 
 

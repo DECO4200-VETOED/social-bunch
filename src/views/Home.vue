@@ -1,18 +1,21 @@
 <template>
-<div v-if="tabs.length < 2">
-  <div class="home-header">
+  <div v-if="tabs.length < 2">
+    <div class="home-header">
       <h1>Home</h1>
       <div class="home-nav">
-        <button @click="routePage('contacts')"><i class="fas fa-phone fa-lg"></i>CONTACTS</button>
-        <button @click="routePage('profile')"><i class="fas fa-user fa-lg"></i>MY PROFILE</button>
+        <button @click="routePage('contacts')">
+          <i class="fas fa-phone fa-lg"></i>CONTACTS
+        </button>
+        <button @click="routePage('profile')">
+          <i class="fas fa-user fa-lg"></i>MY PROFILE
+        </button>
       </div>
     </div>
-  <div class="vertical-center">
-    <p>Join or create a group to get started with Social Bunch!</p>
+    <div class="vertical-center">
+      <p>Join or create a group to get started with Social Bunch!</p>
     </div>
-      <div class="circle" @click="route()"></div>
-
-</div>
+    <div class="circle" @click="route()"></div>
+  </div>
   <div v-else class="home">
     <popup
       v-if="showingCall"
@@ -24,27 +27,51 @@
     <div class="home-header">
       <h1>Home</h1>
       <div class="home-nav">
-        <button @click="routePage('contacts')"><i class="fas fa-phone fa-lg"></i>CONTACTS</button>
-        <button @click="routePage('profile')"><i class="fas fa-user fa-lg"></i>MY PROFILE</button>
+        <button @click="routePage('contacts')">
+          <i class="fas fa-phone fa-lg"></i>CONTACTS
+        </button>
+        <button @click="routePage('profile')">
+          <i class="fas fa-user fa-lg"></i>MY PROFILE
+        </button>
       </div>
     </div>
 
     <div class="row">
       <h3>Your groups</h3>
       <div>
-      <button class="long green" @click="routePage('create')">
-        <i class="fas fa-plus fa-me"></i>Create a group
-      </button>
-      <button class="long black">
-        Sign out
-      </button>
-    </div>
+        <button class="long green" @click="routePage('create')">
+          <i class="fas fa-plus fa-me"></i>Create a group
+        </button>
+        <button class="long black">Sign out</button>
+      </div>
     </div>
 
     <div class="tile-row">
-      <div class="tile" @click="route(1)"></div>
-      <div class="tile" @click="route(2)"></div>
-      <div class="tile" @click="route(3)"></div>
+      <div
+        v-for="(group, index) in groups"
+        :key="index"
+        class="tile"
+        :class="group[index].color"
+        @click="route(parseInt(index + 1))"
+      >
+        <h4>{{ group.title }}</h4>
+        <div class="row">
+          <img
+            :src="require('@/assets/clubicon-' + group.icon + '.png')"
+            :class="groups.length > 2 ? 'centered' : ''"
+          />
+          <h1
+            v-if="groups.length < 3"
+            :class="
+              groups.length < 2
+                ? group[index].color + ' one'
+                : group[index].color
+            "
+          >
+            {{ group.title }}
+          </h1>
+        </div>
+      </div>
     </div>
 
     <div class="bottom-section">
@@ -63,7 +90,11 @@
             <div class="group-key" :class="meeting.color"></div>
             <p>{{ meeting.text }}</p>
           </div>
-          <button v-if="meeting.happeningNow" class="black long join-call" @click="joinCall(meeting.color)">
+          <button
+            v-if="meeting.happeningNow"
+            class="black long join-call"
+            @click="joinCall(meeting.color)"
+          >
             Join call
           </button>
           <div v-else class="rsvp-row">
@@ -97,7 +128,7 @@ import Popup from "../components/Popup.vue";
 export default {
   name: "Home",
   store: store,
-  components: {Popup},
+  components: { Popup },
   created() {
     if (!store.getters.signedIn) {
       this.$router.push("/");
@@ -110,12 +141,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["tabs", "nextTwoMeetings"]),
+    ...mapGetters(["tabs", "nextTwoMeetings", "groups"]),
   },
   methods: {
     joinCall(color) {
-      this.groupColor = color
-      this.showingCall = true
+      this.groupColor = color;
+      this.showingCall = true;
     },
     route(num) {
       this.$router.push(`/group/${num}`);
@@ -242,12 +273,53 @@ h4 {
 }
 
 .tile {
-  background-color: $orange;
+  @include backgrounds;
   height: 250px;
   flex: 1;
   margin: 30px 0;
   cursor: pointer;
   border-radius: 30px;
+  min-width: 250px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  img {
+    height: 120px;
+
+    &.centered {
+      margin: 0 auto;
+    }
+  }
+
+  h4 {
+    text-align: left;
+    padding: 32px;
+  }
+
+  h1 {
+    &.blue {
+      color: #cae8ee;
+    }
+
+    &.orange {
+      color: #ffbfa4;
+    }
+
+    &.yellow {
+      color: #ffde9b;
+    }
+
+    &.one {
+      font-size: 128px;
+    }
+    text-align: right;
+    margin: 0;
+    margin-right: -32px;
+  }
 }
 
 .row {
