@@ -5,6 +5,7 @@ import Welcome from '../views/Welcome.vue'
 import Group from '../views/Group.vue'
 import Profile from '../views/Profile.vue'
 import Contacts from '../views/Contacts.vue'
+import Create from '../views/Create.vue'
 
 
 Vue.use(VueRouter)
@@ -25,15 +26,15 @@ const routes = [{
     component: Profile
   },
   {
+    path: '/create',
+    name: 'Create',
+    component: Create
+  },
+  {
     path: '/contacts',
     name: 'Contacts',
     component: Contacts
   },
-  // {
-  //   path: '/group',
-  //   name: 'Group',
-  //   component: Group
-  // },
   {
     path: '/group/:id',
     name: 'Group',

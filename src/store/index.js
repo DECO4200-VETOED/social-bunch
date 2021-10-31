@@ -10,6 +10,7 @@ export default new Vuex.Store({
                 signedIn: false,
                 onlyCalls: false,
             },
+            icons: ["book", "paint", "cards", "camera", "cupcake", "knit", "microphone", "soccer", "trees"],
             tabColors: ["green", "yellow", "orange", "blue", "yellow", "orange", "blue", "yellow", "orange", "blue"],
             profile: {
                 name: "Margaret O'Leary",
@@ -189,6 +190,30 @@ export default new Vuex.Store({
         },
         declineInvite(state, index) {
             state.data.invites.splice(index - state.data.groups.length - 1, 1)
+        },
+        createGroup(state, info) {
+            let newGroup = {
+                title: info.name,
+                icon: state.data.icons[info.icon],
+                admin: true,
+                nextMeeting: {
+                    happeningNow: false,
+                    response: null,
+                    time: null,
+                    type: null,
+                    location: null,
+                    responses: []
+                },
+                members: [{
+                    name: state.data.profile.name,
+                    avatar: state.data.profile.avatar,
+                    telephone: state.data.profile.telephone,
+                    email: state.data.profile.email
+                } ]
+            }
+
+
+            state.data.groups.push(newGroup)
         }
 
     },
@@ -200,6 +225,7 @@ export default new Vuex.Store({
         signedIn: state => state.data.settings.signedIn,
         onlyCalls: state => state.data.settings.onlyCalls,
         profileData: state => state.data.profile,
+        icons: state => state.data.icons,
         contacts: state => {
             let contacts = []
             let index = 0

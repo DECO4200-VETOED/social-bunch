@@ -32,7 +32,7 @@
     <div class="row">
       <h3>Your groups</h3>
       <div>
-      <button class="long green">
+      <button class="long green" @click="routePage('create')">
         <i class="fas fa-plus fa-me"></i>Create a group
       </button>
       <button class="long black">

@@ -189,8 +189,11 @@ export default {
   border-radius: 30px;
 
   &.expanded {
-  flex-grow: 1;
+    flex-grow: 1;
+  }
 
+  h4 {
+    padding: 0 8px;
   }
 
   img {

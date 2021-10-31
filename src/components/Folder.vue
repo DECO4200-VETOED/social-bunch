@@ -225,7 +225,7 @@ export default {
 }
 
 .folder-nav {
-  min-width: 400px;
+  min-width: 440px;
   display: flex;
   justify-content: space-between;
   margin-left: 30px;
