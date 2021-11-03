@@ -54,7 +54,6 @@
             <div>
               <p class="subtitle">Margaret O, 23/07/21</p>
 
-              <h4>I like Eckersley’s Arts and Crafts in the city</h4>
               <p>
                 I usually opt for Eckersley’s on York street. The staff are very
                 friendly and their range has never disappointed me.
@@ -181,9 +180,6 @@ export default {
         text-align: left;
         img {
           height: 80px;
-        }
-        h4 {
-          margin: 8px 0;
         }
 
         .subtitle {
