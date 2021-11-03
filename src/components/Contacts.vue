@@ -3,18 +3,18 @@
     <div class="left">
       <div class="row">
         <h4 class="label top">Search:</h4>
-        <button v-if="active != null" class="back" @click="active = null">
+        <button v-if="activeContact != null" class="back" @click="$store.commit('setActiveContact', null)">
           {{ "\< Back to results" }}
         </button>
       </div>
       <input type="text" @input="search" />
       <h4 class="label">
-        {{ active != null ? "Currently selected:" : "Search results:" }}
+        {{ activeContact != null ? "Currently selected:" : "Search results:" }}
       </h4>
 
-      <hr :class="active != null ? 'green' : ''" />
+      <hr :class="activeContact != null ? 'green' : ''" />
 
-      <div v-if="active != null" class="info">
+      <div v-if="activeContact != null" class="info">
         <div class="header">
           <img :src="require('@/assets/' + currentContact.avatar)" />
           <h3>{{ currentContact.name }}</h3>
@@ -45,7 +45,7 @@
           ref="`card-${contact.id}`"
           class="search-card"
           :class="contact.color"
-          @click="active == contact.id ? (active = null) : activate(contact.id)"
+          @click="activeContact == contact.id ? $store.commit('setActiveContact', null) : activate(contact.id)"
         >
           <p>{{ contact.name }}</p>
           <div class="row">
@@ -61,16 +61,16 @@
     </div>
 
     <div class="right">
-      <div class="scroll-list">
+      <div class="scroll-list custom-scroll green">
         <div
           v-for="contact in contacts"
           :key="`card-${contact.id}`"
           :id="`card-${contact.id}`"
           class="card"
           :class="
-            active === contact.id ? 'active ' + contact.color : contact.color
+            activeContact == contact.id ? 'active ' + contact.color : contact.color
           "
-          @click="active == contact.id ? (active = null) : activate(contact.id)"
+          @click="activeContact == contact.id ? $store.commit('setActiveContact', null) : activate(contact.id)"
         >
           <h4>{{ contact.name }}</h4>
           <div class="row">
@@ -104,18 +104,18 @@ export default {
     return {
       terms: "",
       inResult: null,
-      active: null,
+    //   active: null,
     };
   },
   computed: {
-    ...mapGetters(["contacts"]),
+    ...mapGetters(["contacts", "activeContact"]),
     currentContact() {
-      return this.contacts.filter((c) => c.id == this.active)[0];
+      return this.contacts.filter((c) => c.id == this.activeContact)[0];
     },
   },
   methods: {
     search(e) {
-      this.active = null;
+      store.commit('setActiveContact', null)
       this.terms = e.target.value;
     },
     filteredContacts() {
@@ -125,7 +125,9 @@ export default {
     },
     activate(index) {
       document.getElementById("card-" + index).scrollIntoView();
-      this.active = index;
+    store.commit('setActiveContact', index)
+
+
     },
   },
 };
@@ -267,15 +269,13 @@ hr {
   }
 }
 
-.scroll-list::-webkit-scrollbar {
-  display: none;
-}
 
 .scroll-list {
-  overflow: scroll;
+  overflow-y: scroll;
   flex-grow: 1;
 
   padding-bottom: 30px;
+  padding-right: 40px;
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */

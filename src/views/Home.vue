@@ -121,7 +121,13 @@
           </div>
         </div>
       </div>
-      <div class="circle" @click="route()"></div>
+      <div class="circle" @click="route()">
+        <button
+              class="long white"
+            >Need help?
+            </button>
+        <img src="../assets/FAQ_Lady.png" height="250px" style="float: right" />
+      </div>
     </div>
   </div>
 </template>
@@ -273,6 +279,25 @@ h4 {
   min-width: 280px;
   background-color: $green;
   border-radius: 100% 0 0 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: column;
+
+  img {
+    margin: 0;
+    z-index: 10;
+  }
+
+  button {
+    color: $green;
+    background-color: white;
+    font-weight: 700;
+    height: 58px;
+    margin-left: 20px;
+    margin-right: -20px;
+  }
 }
 
 .tile-row {

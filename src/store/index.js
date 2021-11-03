@@ -9,8 +9,9 @@ export default new Vuex.Store({
             settings: {
                 signedIn: false,
                 onlyCalls: false,
+                activeContact: null,
             },
-            icons: ["book", "paint", "cards", "camera", "cupcake", "knit", "microphone", "soccer", "trees"],
+            icons: ["book", "paint", "cards", "camera", "cupcake", "knit", "microphone", "soccer", "trees", "bike", "console", "fish", "pingpong", "bowling"],
             tabColors: ["green", "yellow", "orange", "blue", "yellow", "orange", "blue", "yellow", "orange", "blue"],
             profile: {
                 name: "Margaret O'Leary",
@@ -146,27 +147,18 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        loadState(state) {
-            Vue.set(state, 'data', {
-                members: ["Hello 1", "Hello 2", "Forris Byrne", "Margaux Thwaites", "Veronica Mars", "Thelma Louise", "Thelma Louise", "Thelma Louise", "Thelma Louise", "Thelma Louise Thelma Louise Thelma Louise"],
-                // tabs: [{text: "Home", color: red}, "Book club", "Art club", "Quilter's super awesome awesome club"]
-                tabs: [{
-                    text: "Home",
-                    color: "green"
-                }, {
-                    text: "Art club",
-                    color: "yellow"
-                }, {
-                    text: "Book club",
-                    color: "orange"
-                }],
-            })
-        },
         signOut(state) {
             state.data.settings.signedIn = false
         },
+        setActiveContact(state, id) {
+            state.data.settings.activeContact = id
+        },
         toggleOnlyCalls(state) {
             state.data.settings.onlyCalls = !state.data.settings.onlyCalls
+        },
+        resetOnlyCalls(state) {
+            state.data.settings.onlyCalls = false
+
         },
         toggleShare(state) {
             state.data.profile.sharing = !state.data.profile.sharing
@@ -231,6 +223,7 @@ export default new Vuex.Store({
         onlyCalls: state => state.data.settings.onlyCalls,
         profileData: state => state.data.profile,
         icons: state => state.data.icons,
+        activeContact: state => state.data.settings.activeContact,
         contacts: state => {
             let contacts = []
             let index = 0
@@ -260,8 +253,6 @@ export default new Vuex.Store({
             contacts.sort(function compare(a, b) {
                 return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0;
             })
-
-            console.log(contacts)
 
             return contacts
         },

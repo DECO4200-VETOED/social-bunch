@@ -190,6 +190,7 @@ export default {
   },
   methods: {
     goTo(state) {
+      store.commit('resetOnlyCalls')
       this.state = state;
       this.showCallSettings = false;
     },
@@ -199,7 +200,7 @@ export default {
     },
     createAccount() {
         store.commit('createAccount')
-        this.$router.push("/home")
+        this.$router.push("/tutorial")
     },
     callSettings() {
       this.showCallSettings = true;

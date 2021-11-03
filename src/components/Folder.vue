@@ -28,8 +28,9 @@
       </div>
 
       <!-- CONDITIONALLY INSERT OTHER COMPONENTS HERE BASED ON CURRENT PAGE -->
+      <message-board v-if="messageBoard" :groupInd="groupInd"/>
       <group
-        v-if="groupInd != null"
+        v-else-if="groupInd != null"
         :groupInd="groupInd"
         @showMembers="$emit('showMembers')"
         @showCall="$emit('showCall')"
@@ -58,6 +59,7 @@ import store from "../store/index.js";
 import Group from "./Group.vue";
 import Profile from "../components/Profile.vue";
 import Contacts from "../components/Contacts.vue";
+import MessageBoard from "../components/MessageBoard.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -65,7 +67,8 @@ export default {
   components: {
     Group,
     Profile,
-    Contacts
+    Contacts,
+    MessageBoard
   },
   store: store,
   props: {
@@ -74,6 +77,7 @@ export default {
     groupInd: Number,
     contacts: Boolean,
     profile: Boolean,
+    messageBoard: Boolean
   },
   computed: {
     ...mapGetters(["tabs"], ["tabColors"]),

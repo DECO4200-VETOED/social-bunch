@@ -10,7 +10,7 @@
         <p>Enter the emails of the members you would like to join your group</p>
         <div class="email-list">
           <div v-for="(email, index) in invites" :key="index" class="row">
-            <h4 class="label">{{`Email ${index + 1}:`}}</h4>
+            <h4 class="label">{{ `Email ${index + 1}:` }}</h4>
             <input type="text" v-model="invites[index]" />
           </div>
         </div>
@@ -153,11 +153,12 @@
       </div>
 
       <!-- Members modal menu content -->
-      <div v-if="type === 'members'" class="modal-child members">
+      <div v-if="type === 'members'" class="modal-child members custom-scroll" :class="color">
         <div
           v-for="(member, index) in content.members"
           :key="index"
           class="member"
+          @click="goToContact(member)"
         >
           <img :src="require('@/assets/' + member.avatar)" />
           <h4>{{ member.name }}</h4>
@@ -216,8 +217,11 @@
 </template>
 
 <script>
+import store from "../store/index.js";
+
 export default {
   name: "Popup",
+  store: store,
   props: {
     title: String,
     content: Object,
@@ -235,6 +239,12 @@ export default {
         this.compTitle = "Oops! There’s no call now.";
       }
     },
+    goToContact(member) {
+      let id = store.getters.contacts.filter(e => e.email === member.email)[0].id
+      store.commit('setActiveContact', id)
+      this.$router.push('/contacts')
+
+    }
   },
   data() {
     return {
@@ -279,7 +289,6 @@ h2 {
   .email-list {
     max-height: 60%;
     overflow: scroll;
-
   }
 }
 
@@ -381,23 +390,7 @@ img {
   cursor: pointer;
 }
 
-/* width */
-.members::-webkit-scrollbar {
-  width: 20px;
-}
 
-/* Track */
-.members::-webkit-scrollbar-track {
-  background: white;
-  border-radius: 10px;
-}
-
-/* Handle */
-.members::-webkit-scrollbar-thumb {
-  width: 20px;
-  background: #f9a27d;
-  border-radius: 10px;
-}
 
 ///// Join call styles /////
 .checkbox-row {
@@ -425,7 +418,8 @@ img {
 .leave,
 .join-group,
 .decline,
-.invite, .emails {
+.invite,
+.emails {
   width: 90%;
   margin: 16px auto 0;
 

@@ -6,6 +6,8 @@ import Group from '../views/Group.vue'
 import Profile from '../views/Profile.vue'
 import Contacts from '../views/Contacts.vue'
 import Create from '../views/Create.vue'
+import MessageBoard from '../views/MessageBoard.vue'
+import Tutorial from '../views/Tutorial.vue'
 
 
 Vue.use(VueRouter)
@@ -14,6 +16,11 @@ const routes = [{
     path: '/home',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/tutorial',
+    name: 'Tutorial',
+    component: Tutorial
   },
   {
     path: '/',
@@ -39,6 +46,12 @@ const routes = [{
     path: '/group/:id',
     name: 'Group',
     component: Group,
+    props: true
+  },
+  {
+    path: '/group/:id/messages',
+    name: 'Message Board',
+    component: MessageBoard,
     props: true
   },
   // {

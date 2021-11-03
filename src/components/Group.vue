@@ -80,7 +80,7 @@
       </button>
 
       <button :class="groupColor" @click="$emit('showMembers')">Members</button>
-      <button :class="groupColor">Message Board</button>
+      <button :class="groupColor" @click="$router.push(`/group/${groupInd}/messages`)">Message Board</button>
     </div>
   </div>
 </template>
