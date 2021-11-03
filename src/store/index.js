@@ -15,7 +15,7 @@ export default new Vuex.Store({
             tabColors: ["green", "yellow", "orange", "blue", "yellow", "orange", "blue", "yellow", "orange", "blue"],
             profile: {
                 name: "Margaret O'Leary",
-                avatar: "avatar-placeholder.png",
+                avatar: "cat.png",
                 telephone: "0412989113",
                 email: "MargaretOl9@hotmail.com",
                 sharing: false,
@@ -45,22 +45,22 @@ export default new Vuex.Store({
                     },
                     members: [{
                         name: "Betty Augustine",
-                        avatar: "avatar-placeholder.png",
+                        avatar: "cat.png",
                         telephone: "0411232343",
                         email: "betty.a23@gmail.com"
                     }, {
                         name: "Alice Thwaites",
-                        avatar: "avatar-placeholder.png",
+                        avatar: "cat.png",
                         telephone: "0411232367",
                         email: "alicethw3@gmail.com"
                     }, {
                         name: "Doris Byrne",
-                        avatar: "avatar-placeholder.png",
+                        avatar: "cat.png",
                         telephone: "0411222333",
                         email: "dbyrne@gmail.com"
                     }, {
                         name: "Karen Charles",
-                        avatar: "avatar-placeholder.png",
+                        avatar: "cat.png",
                         telephone: "0412989113",
                         email: "karenc@gmail.com"
                     }],
@@ -90,17 +90,17 @@ export default new Vuex.Store({
                     },
                     members: [{
                         name: "Betty Augustine",
-                        avatar: "avatar-placeholder.png",
+                        avatar: "cat.png",
                         telephone: "0411232343",
                         email: "betty.a23@gmail.com"
                     }, {
                         name: "Melissa Kravitz",
-                        avatar: "avatar-placeholder.png",
+                        avatar: "cat.png",
                         telephone: "0484272325",
                         email: "mkrav@gmail.com"
                     }, {
                         name: "Doris Byrne",
-                        avatar: "avatar-placeholder.png",
+                        avatar: "cat.png",
                         telephone: "0411222333",
                         email: "dbyrne@gmail.com"
                     }],
@@ -131,12 +131,12 @@ export default new Vuex.Store({
                 },
                 members: [{
                     name: "Betty Augustine",
-                    avatar: "avatar-placeholder.png",
+                    avatar: "cat.png",
                     telephone: "0411232343",
                     email: "betty.a23@gmail.com"
                 }, {
                     name: "Doris Byrne",
-                    avatar: "avatar-placeholder.png",
+                    avatar: "cat.png",
                     telephone: "0411222333",
                     email: "dbyrne@gmail.com"
                 }],

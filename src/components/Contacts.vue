@@ -3,7 +3,11 @@
     <div class="left">
       <div class="row">
         <h4 class="label top">Search:</h4>
-        <button v-if="activeContact != null" class="back" @click="$store.commit('setActiveContact', null)">
+        <button
+          v-if="activeContact != null"
+          class="back"
+          @click="$store.commit('setActiveContact', null)"
+        >
           {{ "\< Back to results" }}
         </button>
       </div>
@@ -45,7 +49,11 @@
           ref="`card-${contact.id}`"
           class="search-card"
           :class="contact.color"
-          @click="activeContact == contact.id ? $store.commit('setActiveContact', null) : activate(contact.id)"
+          @click="
+            activeContact == contact.id
+              ? $store.commit('setActiveContact', null)
+              : activate(contact.id)
+          "
         >
           <p>{{ contact.name }}</p>
           <div class="row">
@@ -68,9 +76,15 @@
           :id="`card-${contact.id}`"
           class="card"
           :class="
-            activeContact == contact.id ? 'active ' + contact.color : contact.color
+            activeContact == contact.id
+              ? 'active ' + contact.color
+              : contact.color
           "
-          @click="activeContact == contact.id ? $store.commit('setActiveContact', null) : activate(contact.id)"
+          @click="
+            activeContact == contact.id
+              ? $store.commit('setActiveContact', null)
+              : activate(contact.id)
+          "
         >
           <h4>{{ contact.name }}</h4>
           <div class="row">
@@ -104,7 +118,7 @@ export default {
     return {
       terms: "",
       inResult: null,
-    //   active: null,
+      //   active: null,
     };
   },
   computed: {
@@ -115,7 +129,7 @@ export default {
   },
   methods: {
     search(e) {
-      store.commit('setActiveContact', null)
+      store.commit("setActiveContact", null);
       this.terms = e.target.value;
     },
     filteredContacts() {
@@ -125,9 +139,7 @@ export default {
     },
     activate(index) {
       document.getElementById("card-" + index).scrollIntoView();
-    store.commit('setActiveContact', index)
-
-
+      store.commit("setActiveContact", index);
     },
   },
 };
@@ -162,6 +174,7 @@ hr {
       margin-right: 16px;
       height: 64px;
       width: 64px;
+      border-radius: 50%;
     }
     h3 {
       margin: 0;
@@ -264,11 +277,10 @@ hr {
 
     .scroll-list {
       margin-left: 60px;
-    //   margin-right: 30px;
+      //   margin-right: 30px;
     }
   }
 }
-
 
 .scroll-list {
   overflow-y: scroll;

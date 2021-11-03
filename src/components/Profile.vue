@@ -115,6 +115,8 @@ export default {
         height: 200px;
         width: 200px;
         margin: 0 auto;
+        border-radius: 50%;
+        // background: black;
       }
 
       h3 {

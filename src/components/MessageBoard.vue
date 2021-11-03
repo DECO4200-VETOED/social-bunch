@@ -42,9 +42,12 @@
               anyone had any experience shopping for oil paints in and around
               the cbd? I'd love some advice. Thanks, Doris :)
             </p>
-            <div class="center-cropped" 
-     style="background-image: url('https://www.carlisleart.com.au/database/images/art-spectrum-oil-paints-series-4-5-main-40063-40063.jpg');">
-</div>
+            <div
+              class="center-cropped"
+              style="
+                background-image: url('https://www.carlisleart.com.au/database/images/art-spectrum-oil-paints-series-4-5-main-40063-40063.jpg');
+              "
+            ></div>
 
             <hr />
           </div>
@@ -111,7 +114,7 @@ export default {
 }
 
 .center-cropped {
-    margin: 0 auto 16px;
+  margin: 0 auto 16px;
   width: 100%;
   height: 300px;
   background-position: center center;
@@ -141,6 +144,7 @@ export default {
       padding: 16px 0;
       img {
         height: 80px;
+        border-radius: 50%;
       }
       h4 {
         margin: 8px 0;
@@ -180,6 +184,7 @@ export default {
         text-align: left;
         img {
           height: 80px;
+          border-radius: 50%;
         }
 
         .subtitle {

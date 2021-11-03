@@ -370,6 +370,11 @@ h2 {
 .members {
   padding: 0 30%;
   overflow: auto;
+  img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
 }
 
 h4 {
@@ -473,9 +478,17 @@ img {
   margin: 0 auto;
   text-align: left;
 
+  i {
+    color: black;
+  }
+
   p {
     font-weight: 700;
     font-size: 24px;
+  }
+
+  h3 {
+    margin-bottom: 0;
   }
 
   .left-column {
