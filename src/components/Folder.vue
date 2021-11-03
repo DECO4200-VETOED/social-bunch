@@ -133,6 +133,10 @@ export default {
   flex-direction: row;
 }
 
+.tab-area::-webkit-scrollbar {
+  display: none;
+}
+
 .tab-area {
   background-color: white;
   min-width: 64px;
