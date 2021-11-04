@@ -16,7 +16,7 @@
     <div class="folder-area" :class="activeColor">
       <div class="folder-header" :class="activeColor">
         <h1>{{ title }}</h1>
-        <div class="folder-nav">
+        <div class="folder-nav">  
           <button :class="contacts ? 'active' : ''" @click="routePage('contacts')">
             <i class="fas fa-phone fa-lg"></i>CONTACTS
           </button>
