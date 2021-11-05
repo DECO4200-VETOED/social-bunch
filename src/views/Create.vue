@@ -13,6 +13,7 @@
           <button class="info" @click="$store.commit('setHelp', true)"><i class="fas fa-info fa-lg"></i></button>
         </div>
       </div>
+      <!-- TODO: Make this not lorem ipsum? -->
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Natoque
         ultrices proin aenean faucibus. Amet, et vitae, quam congue. Congue
