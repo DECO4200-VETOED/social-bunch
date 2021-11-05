@@ -24,6 +24,9 @@ export default new Vuex.Store({
         toggleShare(state) {
             state.data.profile.sharing = !state.data.profile.sharing
         },
+        setHelp(state, value) {
+            state.data.settings.viewHelp = value
+        },
         signIn(state) {
             state.data.settings.signedIn = true
         },
@@ -104,6 +107,8 @@ export default new Vuex.Store({
         profileData: state => state.data.profile,
         icons: state => state.data.icons,
         activeContact: state => state.data.settings.activeContact,
+        viewHelp: state => state.data.settings.viewHelp,
+        faqs: state => state.data.faqs,
         contacts: state => {
             let contacts = []
             let index = 0

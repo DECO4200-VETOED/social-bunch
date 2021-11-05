@@ -3,6 +3,7 @@
             signedIn: false,
             onlyCalls: false,
             activeContact: null,
+            viewHelp: false,
         },
         icons: ["book", "paint", "cards", "camera", "cupcake", "knit", "microphone", "soccer", "trees", "bike", "console", "fish", "pingpong", "bowling"],
         tabColors: ["green", "yellow", "orange", "blue", "yellow", "orange", "blue", "yellow", "orange", "blue"],
@@ -241,7 +242,7 @@
                         email: "dbyrne@gmail.com",
                         attending: true
 
-                    }, 
+                    },
                 ],
 
                 messages: [
@@ -346,17 +347,18 @@
                         content: "They just sit there taking up space I could use for books I do actually read and I'm tired of lugging them around every time I move. So I want to get rid of them but...sentiment",
                         image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1798&q=80",
                         comments: [{
-                            posterName: "Doris Byrne",
-                            posterAvatar: "dp3.jpeg",
-                            date: "04/11/21",
-                            content: "I like to donate them to a younger member of the family so that I know they are still loved, and I can share the joy of those books with my relatives! Also helps encourage the younger generations to read something….",
-                        },
-                        {
-                            posterName: "Victoria Striker",
-                            posterAvatar: "dp10.jpeg",
-                            date: "04/11/21",
-                            content: "I’ll take some of those off your hands :D ",
-                        }, ],
+                                posterName: "Doris Byrne",
+                                posterAvatar: "dp3.jpeg",
+                                date: "04/11/21",
+                                content: "I like to donate them to a younger member of the family so that I know they are still loved, and I can share the joy of those books with my relatives! Also helps encourage the younger generations to read something….",
+                            },
+                            {
+                                posterName: "Victoria Striker",
+                                posterAvatar: "dp10.jpeg",
+                                date: "04/11/21",
+                                content: "I’ll take some of those off your hands :D ",
+                            },
+                        ],
                     },
 
 
@@ -446,20 +448,43 @@
                     content: "I'm redoing the pots on my front balcony, and was wondering if anyone had any experience with which colours look best over summer in the sun. I'm worried that the colour will fase so leaning towards something richer but I can't stop thinking of a really vibrant pink! What do you think?",
                     image: "https://images.unsplash.com/photo-1534344624678-7bbcc76f048d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGluayUyMHBsYW50JTIwcG90fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
                     comments: [{
-                        posterName: "Martha Hendrick",
-                        posterAvatar: "dp13.jpeg",
-                        date: "04/11/21",
-                        content: "I absolutely love this idea! I'm thinking of doign something similar...",
-                    },
-                    {
-                        posterName: "Victoria Striker",
-                        posterAvatar: "dp10.jpeg",
-                        date: "04/11/21",
-                        content: "I'm partial to a good blue but the pink goes well with your front room and the awning you put up last summer!",
-                    }, ],
+                            posterName: "Martha Hendrick",
+                            posterAvatar: "dp13.jpeg",
+                            date: "04/11/21",
+                            content: "I absolutely love this idea! I'm thinking of doign something similar...",
+                        },
+                        {
+                            posterName: "Victoria Striker",
+                            posterAvatar: "dp10.jpeg",
+                            date: "04/11/21",
+                            content: "I'm partial to a good blue but the pink goes well with your front room and the awning you put up last summer!",
+                        },
+                    ],
                 },
             ]
-        }]
+        }],
+
+        faqs: [{
+                title: "How do I join a new group?",
+                body: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur."
+            },
+            {
+                title: "How can I check when my video group meeting is on?",
+                body: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur."
+            },
+            {
+                title: "How can I check who is attending my next meeting?",
+                body: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur."
+            },
+            // {title: "", body: ""},
+            // {title: "", body: ""},
+            // {title: "", body: ""},
+            // {title: "", body: ""},
+            // {title: "", body: ""},
+            // {title: "", body: ""},
+            // {title: "", body: ""},
+            // {title: "", body: ""},
+        ]
 
     }
 

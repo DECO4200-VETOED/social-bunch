@@ -10,7 +10,7 @@
           <button @click="$router.push('profile')">
             <i class="fas fa-user fa-lg"></i>MY PROFILE
           </button>
-          <button class="info"><i class="fas fa-info fa-lg"></i></button>
+          <button class="info" @click="$store.commit('setHelp', true)"><i class="fas fa-info fa-lg"></i></button>
         </div>
       </div>
       <p>

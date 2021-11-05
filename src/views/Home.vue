@@ -121,7 +121,7 @@
           </div>
         </div>
       </div>
-      <div class="circle" @click="route()">
+      <div class="circle" @click="$store.commit('setHelp', true)">
         <button
               class="long white"
             >Need help?
