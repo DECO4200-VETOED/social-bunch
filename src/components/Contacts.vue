@@ -162,6 +162,10 @@ hr {
 
 .info {
   overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;;
+  }
   text-align: left;
 
   .header {
@@ -172,8 +176,10 @@ hr {
 
     img {
       margin-right: 16px;
-      height: 64px;
-      width: 64px;
+      height: 80px;
+      min-width: 80px;
+      max-width: 80px;
+
       border-radius: 50%;
     }
     h3 {

@@ -402,7 +402,7 @@ h2 {
 
 ///// Members Popup Styles /////
 .members {
-  padding: 0 30%;
+  padding: 0 26%;
   overflow: auto;
   img {
     border-radius: 50%;

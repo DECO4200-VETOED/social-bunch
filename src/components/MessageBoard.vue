@@ -194,9 +194,10 @@ export default {
       justify-content: flex-start;
       align-items: center;
       width: 20%;
-      padding: 16px 0;
+      margin: 16px 16px 0 0;
       img {
         height: 80px;
+        width: 80px;
         border-radius: 50%;
       }
       h4 {
@@ -237,6 +238,8 @@ export default {
         text-align: left;
         img {
           height: 80px;
+          min-width: 80px;
+          max-width: 80px;
           border-radius: 50%;
         }
 
