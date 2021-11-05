@@ -35,10 +35,21 @@ export default new Vuex.Store({
             console.log(state.data.groups[group])
             state.data.groups[group - 1].messages[message].comments.push({
                 posterName: state.data.profile.name,
-                posterAvatar: "cat.png",
+                posterAvatar: state.data.profile.avatar,
                 date: "05/11/21",
                 content: reply
             })
+        },
+        makePost(state, {title, content, img, group}) {
+            console.log(group)
+            state.data.groups[group - 1].messages.splice(0, 0, {
+                posterName: state.data.profile.name,
+                posterAvatar: state.data.profile.avatar,
+                date: "05/11/21",
+                title: title,
+                content: content,
+                image: img,
+                comments: []})
         },
         leaveGroup(state, index) {
             state.data.groups.splice(index, 1)

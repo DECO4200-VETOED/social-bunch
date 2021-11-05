@@ -5,6 +5,29 @@
       <i class="fas fa-times close fa-3x" @click="$emit('triggerClose')"></i>
       <hr />
 
+      <!-- New post popup content -->
+      <div v-if="type === 'post'" class="modal-child post">
+        <div>
+          <div>
+            <h3 class="label">Title</h3>
+            <input type="text" v-model="postTitle" />
+          </div>
+          <div>
+            <h3 class="label">Main content</h3>
+
+            <textarea v-model="postContent" />
+          </div>
+          <div>
+            <h3 class="label">Link to an image</h3>
+
+            <input type="text" v-model="postImg" />
+          </div>
+        </div>
+        <button class="long green" @click="makePost(content.groupInd)">
+          Post
+        </button>
+      </div>
+
       <!-- Invite members emails popup content -->
       <div v-if="type === 'invite' && inviteMembers" class="modal-child emails">
         <p>Enter the emails of the members you would like to join your group</p>
@@ -153,7 +176,11 @@
       </div>
 
       <!-- Members modal menu content -->
-      <div v-if="type === 'members'" class="modal-child members custom-scroll" :class="color">
+      <div
+        v-if="type === 'members'"
+        class="modal-child members custom-scroll"
+        :class="color"
+      >
         <div
           v-for="(member, index) in content.members"
           :key="index"
@@ -240,10 +267,14 @@ export default {
       }
     },
     goToContact(member) {
-      let id = store.getters.contacts.filter(e => e.email === member.email)[0].id
-      store.commit('setActiveContact', id)
-      this.$router.push('/contacts')
-
+      let id = store.getters.contacts.filter((e) => e.email === member.email)[0]
+        .id;
+      store.commit("setActiveContact", id);
+      this.$router.push("/contacts");
+    },
+    makePost(groupInd) {
+      store.commit("makePost", {title: this.postTitle, content: this.postContent, img: this.postImage, group: groupInd});
+      this.$emit('triggerClose')
     }
   },
   data() {
@@ -255,6 +286,9 @@ export default {
       confirmPassword: false,
       compTitle: this.title,
       invites: [[], [], [], [], []],
+      postTitle: "",
+      postContent: "",
+      postImg: "",
     };
   },
 };
@@ -395,8 +429,6 @@ img {
   cursor: pointer;
 }
 
-
-
 ///// Join call styles /////
 .checkbox-row {
   display: flex;
@@ -419,12 +451,22 @@ img {
   }
 }
 
+.post {
+  input {
+    width: 100%;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .oops,
 .leave,
 .join-group,
 .decline,
 .invite,
-.emails {
+.emails, .post {
   width: 90%;
   margin: 16px auto 0;
 
@@ -467,6 +509,28 @@ img {
     height: 40%;
     @include sans-serif;
     font-size: 19px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.post {
+  overflow-x: hidden;
+  input {
+    width: 100%;
+  }
+
+  textarea {
+    width: 99%;
+    resize: vertical;
+    min-height: 48px;
+  }
+
+  button {
+    width: 60%;
+    margin: 32px auto 16px;
   }
 }
 
@@ -498,7 +562,7 @@ img {
     padding-right: 5%;
     overflow-y: scroll;
 
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
     }
   }
@@ -508,10 +572,9 @@ img {
     padding-left: 5%;
     overflow-y: scroll;
 
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
     }
-
 
     .row {
       display: flex;

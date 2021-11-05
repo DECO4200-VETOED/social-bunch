@@ -6,7 +6,7 @@
           {{ `\< Back to group` }}
         </button>
 
-        <button class="add" :class="groupColor" @click="$router.go(-1)">
+        <button class="add" :class="groupColor" @click="$emit('newPost')">
           {{ `+ Add new post` }}
         </button>
       </div>
@@ -41,12 +41,12 @@
               {{ message.content }}
             </p>
             <div
-              v-if="message.image != ''"
+              v-if="message.image !== '' && message.image != null"
               class="center-cropped"
               :style="`background-image: url('${message.image}');`"
             ></div>
 
-            <hr />
+            <hr v-if="message.comments.length > 0" />
           </div>
 
           <div
@@ -117,10 +117,7 @@ export default {
   },
   methods: {
     postReply(index) {
-      console.log(this.replies[index])
-
       store.commit('postReply', {reply: this.replies[index], message: index, group: this.groupInd})
-
       this.replies[index] = ""
       
     },
@@ -170,13 +167,14 @@ export default {
 }
 
 .feed {
+
   padding-right: 16px;
   display: flex;
   flex-direction: column;
 
-  overflow: scroll;
+  overflow-y: scroll;
   margin: 40px 60px 20px;
-  height: calc(100% - 284px);
+  height: calc(100% - 300px);
 
   .post {
     display: flex;

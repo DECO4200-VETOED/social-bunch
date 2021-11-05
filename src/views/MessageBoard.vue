@@ -1,9 +1,18 @@
 <template>
   <div class="message-board">
+    <popup
+      v-if="newPost"
+      @triggerClose="newPost = false"
+      :color="groupColor"
+      :type="'post'"
+      :title="'New Post'"
+      :content="{groupInd: groupInd}"
+    />
     <folder
       :activeColor="tabColors[groupInd]"
       :groupInd="parseInt(groupInd)"
       :messageBoard="true"
+      @newPost="newPost = true"
     />
     
   </div>
@@ -14,6 +23,7 @@ import { mapGetters } from "vuex";
 import store from "../store/index.js";
 
 import Folder from "../components/Folder.vue";
+import Popup from "../components/Popup.vue";
 
 export default {
   name: "MessageBoard",
@@ -25,16 +35,13 @@ export default {
 //   },
   components: {
     Folder,
-    // Popup,
+    Popup,
   },
-//   data() {
-//     return {
-//       showingMembers: false,
-//       showingCall: false,
-//       showingGoing: false,
-//       showingInvites: false,
-//     };
-//   },
+  data() {
+    return {
+      newPost: false,
+    };
+  },
   computed: {
     ...mapGetters(["tabColors"]),
     groupInd() {

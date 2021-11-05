@@ -28,7 +28,7 @@
       </div>
 
       <!-- CONDITIONALLY INSERT OTHER COMPONENTS HERE BASED ON CURRENT PAGE -->
-      <message-board v-if="messageBoard" :groupInd="groupInd"/>
+      <message-board v-if="messageBoard" :groupInd="groupInd" @newPost="$emit('newPost')"/>
       <group
         v-else-if="groupInd != null"
         :groupInd="groupInd"
