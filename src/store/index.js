@@ -31,6 +31,15 @@ export default new Vuex.Store({
             state.data.settings.signedIn = true
             // TODO: Would go to a create account flow??
         },
+        postReply(state, {reply, message, group}) {
+            console.log(state.data.groups[group])
+            state.data.groups[group - 1].messages[message].comments.push({
+                posterName: state.data.profile.name,
+                posterAvatar: "cat.png",
+                date: "05/11/21",
+                content: reply
+            })
+        },
         leaveGroup(state, index) {
             state.data.groups.splice(index, 1)
         },

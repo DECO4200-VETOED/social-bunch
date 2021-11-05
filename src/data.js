@@ -25,7 +25,7 @@
                 },
                 members: [{
                         name: "Betty Augustine",
-                        avatar: "cat.png",
+                        avatar: "dp1.jpeg",
                         telephone: "0499836725",
                         email: "betty.a23@gmail.com",
                         attending: true

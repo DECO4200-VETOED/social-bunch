@@ -68,9 +68,9 @@
           <hr />
 
           <div class="reply-row">
-            <textarea type="text" />
+            <textarea type="text" v-model="replies[group.messages.indexOf(message)]"/>
 
-            <button class="back" :class="groupColor" @click="$router.go(-1)">
+            <button class="back" :class="groupColor" @click="postReply(group.messages.indexOf(message))">
               {{ `Send reply` }}
             </button>
           </div>
@@ -95,7 +95,7 @@ export default {
     DropDown,
   },
   data() {
-    return { terms: "", sortFilter: "Recent posts" };
+    return { terms: "", sortFilter: "Recent posts", replies: new Array(100).fill("") };
   },
   computed: {
     ...mapGetters(["profileData"]),
@@ -107,8 +107,7 @@ export default {
       return store.getters.colorByGroup(this.groupInd);
     },
     messages() {
-
-      return this.group.messages.filter(
+      return this.group.messages.filter (
         (m) =>
           m.content.toUpperCase().includes(this.terms.toUpperCase()) ||
           m.posterName.toUpperCase().includes(this.terms.toUpperCase()) ||
@@ -117,6 +116,14 @@ export default {
     },
   },
   methods: {
+    postReply(index) {
+      console.log(this.replies[index])
+
+      store.commit('postReply', {reply: this.replies[index], message: index, group: this.groupInd})
+
+      this.replies[index] = ""
+      
+    },
     sortMessages() {
       if (this.sortFilter === "Recent posts") {
         return this.messages;
