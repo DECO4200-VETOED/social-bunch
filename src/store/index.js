@@ -35,7 +35,6 @@ export default new Vuex.Store({
             // TODO: Would go to a create account flow??
         },
         postReply(state, {reply, message, group}) {
-            console.log(state.data.groups[group])
             state.data.groups[group - 1].messages[message].comments.push({
                 posterName: state.data.profile.name,
                 posterAvatar: state.data.profile.avatar,
@@ -44,7 +43,6 @@ export default new Vuex.Store({
             })
         },
         makePost(state, {title, content, img, group}) {
-            console.log(group, img)
             state.data.groups[group - 1].messages.splice(0, 0, {
                 posterName: state.data.profile.name,
                 posterAvatar: state.data.profile.avatar,
@@ -58,13 +56,8 @@ export default new Vuex.Store({
             state.data.groups.splice(index, 1)
         },
         joinGroup(state, index) {
-            console.log(index, state.data.groups, state.data.invites, index - state.data.groups.length)
             state.data.groups.push(state.data.invites[index - state.data.groups.length])
-            console.log(index, state.data.groups, state.data.invites, index - state.data.groups.length)
-
             state.data.invites.splice(index - (state.data.groups.length - 1), 1)
-            console.log(index, state.data.groups, state.data.invites, index - state.data.groups.length)
-
 
         },
         declineInvite(state, index) {
@@ -164,7 +157,6 @@ export default new Vuex.Store({
                 })
             }
 
-            console.log(groups)
             return groups
 
         },
@@ -212,7 +204,6 @@ export default new Vuex.Store({
 
             }
 
-            console.log(meetings)
             return meetings
         }
 

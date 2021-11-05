@@ -257,7 +257,6 @@ export default {
   },
   methods: {
     avatarSrc(src) {
-      console.log("../assets/" + src);
       return "../assets/" + src;
     },
     noCall() {

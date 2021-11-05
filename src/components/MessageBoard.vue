@@ -122,7 +122,6 @@ export default {
       return store.getters.groupByInd(this.groupInd);
     },
     groupColor() {
-      console.log(this.groupInd, store.getters.colorByGroup(this.groupInd));
       return store.getters.colorByGroup(this.groupInd);
     },
     messages() {

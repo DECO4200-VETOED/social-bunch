@@ -50,7 +50,6 @@ export default {
   methods: {
     handleSelection(options, i) {
       this.selected = options[i];
-      console.log(this.selected)
       this.open = false;
       this.$emit("input", {options: options, index: i});
     }
