@@ -126,6 +126,12 @@ export default {
         return this.messages;
       } else if (this.sortFilter === "Newest comments") {
         function compare(a, b) {
+          if (a.comments.length == 0) {
+            return 1
+          } else if (b.comments.length == 0) {
+            return -1
+          }
+
           a = a.comments[a.comments.length - 1].date
             .split("/")
             .reverse()
