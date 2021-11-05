@@ -54,6 +54,7 @@ const routes = [{
     component: MessageBoard,
     props: true
   },
+  { path: "*", component: Welcome }
 ]
 
 const router = new VueRouter({
