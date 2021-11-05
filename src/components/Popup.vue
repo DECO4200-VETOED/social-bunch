@@ -273,7 +273,7 @@ export default {
       this.$router.push("/contacts");
     },
     makePost(groupInd) {
-      store.commit("makePost", {title: this.postTitle, content: this.postContent, img: this.postImage, group: groupInd});
+      store.commit("makePost", {title: this.postTitle, content: this.postContent, img: this.postImg, group: groupInd});
       this.$emit('triggerClose')
     }
   },

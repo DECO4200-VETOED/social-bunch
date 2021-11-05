@@ -41,7 +41,7 @@ export default new Vuex.Store({
             })
         },
         makePost(state, {title, content, img, group}) {
-            console.log(group)
+            console.log(group, img)
             state.data.groups[group - 1].messages.splice(0, 0, {
                 posterName: state.data.profile.name,
                 posterAvatar: state.data.profile.avatar,
