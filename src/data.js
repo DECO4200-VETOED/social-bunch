@@ -244,20 +244,126 @@
                 ],
 
                 messages: [
+
                     {
-                        posterName: "",
+                        posterName: "Anne Karolewski",
+                        posterAvatar: "cat.png",
+                        date: "01/11/21",
+                        title: "Cosy novels?",
+                        content: "I’ve been reading (a lot of thrillers lately and I’m looking for a palette cleanser. I’d like something cosy and happy and light. I love Jenny Colgan’s novels. So, something similar. Not necessarily steamy romance but something nice and light. Thank you.",
+                        image: "",
+                        comments: [{
+                                posterName: "Victoria Striker",
+                                posterAvatar: "cat.png",
+                                date: "01/11/21",
+                                content: "The No 1 Ladies Detective Agency Series by Alexander Mccall Smith",
+                            },
+                            {
+                                posterName: "Doris Byrne",
+                                posterAvatar: "cat.png",
+                                date: "03/11/21",
+                                content: "Anything by Lisa Kleypas!",
+                            },
+                            {
+                                posterName: "Anne Karolewski",
+                                posterAvatar: "cat.png",
+                                date: "04/11/21",
+                                content: "Thanks guys – just about to dig into Devil in Winter so I will keep everybody updated here. Let me know if anyone wants to be a reading buddy on this one",
+                            },
+                        ],
+                    },
+
+                    {
+                        posterName: "Betty Augustine",
+                        posterAvatar: "cat.png",
+                        date: "25/10/21",
+                        title: "Suggestion for our next book of the week!",
+                        content: "I'd like to start reading 'The Poppy War' by R. F. Kuang. But I'm afraid I won't be able to read it by myself. I think it'll be fun to discuss and share opinions about the chapters that we read, I think it would be a good candidate for the club. It'll also help me stay accountable and not to give up on it. Thoughts?",
+                        image: "",
+                        comments: [{
+                                posterName: "Anne Karolewski",
+                                posterAvatar: "cat.png",
+                                date: "26/10/21",
+                                content: "I read it recently – not ready for it again just yet but maybe in a few months! I do recommend it though",
+                            },
+                            {
+                                posterName: "Sarah Bridges",
+                                posterAvatar: "cat.png",
+                                date: "27/10/21",
+                                content: "I would love to do that as one of our next books",
+                            },
+                            {
+                                posterName: "Doris Byrne",
+                                posterAvatar: "cat.png",
+                                date: "27/10/21",
+                                content: "If the group doesn’t want to read it all together I’m happy to readd it alongside you – we can discuss it in our weekly call xx",
+                            },
+                            {
+                                posterName: "Victoria Striker",
+                                posterAvatar: "cat.png",
+                                date: "27/10/21",
+                                content: "Terrible! NEXT!",
+                            },
+                        ],
+                    },
+
+                    {
+                        posterName: "Victoria Striker",
+                        posterAvatar: "cat.png",
+                        date: "02/11/21",
+                        title: "Dragon Keeper by Robin Hobb",
+                        content: "I am starting Dragon Keeper, and I would love to discuss. I love anything Robin Hobb writes, and the Realm of of Elderlings is my favorite series right now. Anyone else read it? Thanks, Margaret",
+                        image: "",
+                        comments: [{
+                            posterName: "Sarah Bridges",
+                            posterAvatar: "cat.png",
+                            date: "02/11/21",
+                            content: "Not there yet…just finishing up the Farseer Trilogy… I'll get there eventually… Enjoy! X",
+                        }, {
+                            posterName: "Doris Byrne",
+                            posterAvatar: "cat.png",
+                            date: "02/11/21",
+                            content: "A FAVOURITE OF MY GRANDDAUGHTER IF I REMEMBER CORRECTLY. I CAN SEE IF SHE CAN GIVE ME ANY FEEDBACK WHEN I CALL HER ON SUNDAY. IF I FORGET DON’T REMIND ME X",
+                        }, ],
+                    },
+
+                    {
+                        posterName: "Alice Clooney",
                         posterAvatar: "cat.png",
                         date: "04/11/21",
                         title: "",
-                        content: "",
+                        content: "Hi Book Club, Sorry everybody, but I can’t make the next meeting because I have a dental appointment that I can’t move. See you all next time - Thank you, Alice.",
                         image: "",
+                        comments: [],
+                    },
+
+                    {
+                        posterName: "Betty Augustine",
+                        posterAvatar: "cat.png",
+                        date: "03/11/21",
+                        title: "What do you do with old unloved books?",
+                        content: "They just sit there taking up space I could use for books I do actually read and I'm tired of lugging them around every time I move. So I want to get rid of them but...sentiment",
+                        image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1798&q=80",
                         comments: [{
-                            posterName: "",
+                            posterName: "Doris Byrne",
                             posterAvatar: "cat.png",
                             date: "04/11/21",
-                            content: "",
+                            content: "I like to donate them to a younger member of the family so that I know they are still loved, and I can share the joy of those books with my relatives! Also helps encourage the younger generations to read something….",
+                        },
+                        {
+                            posterName: "Victoria Striker",
+                            posterAvatar: "cat.png",
+                            date: "04/11/21",
+                            content: "I’ll take some of those off your hands :D ",
                         }, ],
                     },
+
+
+
+
+
+
+
                 ]
             }
         ],
@@ -346,3 +452,19 @@
     }
 
     export default data;
+
+
+    // {
+    //     posterName: "",
+    //     posterAvatar: "cat.png",
+    //     date: "04/11/21",
+    //     title: "",
+    //     content: "",
+    //     image: "",
+    //     comments: [{
+    //         posterName: "",
+    //         posterAvatar: "cat.png",
+    //         date: "04/11/21",
+    //         content: "",
+    //     }, ],
+    // },
