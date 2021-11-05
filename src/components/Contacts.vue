@@ -321,7 +321,10 @@ hr {
     }
 
     &.active {
-      outline: 4px solid $green;
+      // outline: 4px solid $green;
+      box-shadow: 0px 0px 0px 4px $green;
+      // border: 4px solid $green;
+
     }
   }
 
