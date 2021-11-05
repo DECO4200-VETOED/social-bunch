@@ -25,7 +25,15 @@
       </div>
     </div>
 
-    <div class="feed custom-scroll" :class="groupColor">
+    <div
+      class="feed custom-scroll"
+      :class="terms !== '' ? `${groupColor} results` : groupColor"
+    >
+      <div v-if="terms !== ''" class="results-top">
+        <h3 class="label">Showing results for '{{ terms }}'</h3>
+        <i class="fas fa-times fa-3x" @click="clearResults"></i>
+      </div>
+
       <div v-for="(message, index) in sortMessages()" :key="index" class="post">
         <div class="poster">
           <img :src="require('@/assets/' + message.posterAvatar)" />
@@ -68,9 +76,16 @@
           <hr />
 
           <div class="reply-row">
-            <textarea type="text" v-model="replies[group.messages.indexOf(message)]"/>
+            <textarea
+              type="text"
+              v-model="replies[group.messages.indexOf(message)]"
+            />
 
-            <button class="back" :class="groupColor" @click="postReply(group.messages.indexOf(message))">
+            <button
+              class="back"
+              :class="groupColor"
+              @click="postReply(group.messages.indexOf(message))"
+            >
               {{ `Send reply` }}
             </button>
           </div>
@@ -95,7 +110,11 @@ export default {
     DropDown,
   },
   data() {
-    return { terms: "", sortFilter: "Recent posts", replies: new Array(100).fill("") };
+    return {
+      terms: "",
+      sortFilter: "Recent posts",
+      replies: new Array(100).fill(""),
+    };
   },
   computed: {
     ...mapGetters(["profileData"]),
@@ -107,7 +126,7 @@ export default {
       return store.getters.colorByGroup(this.groupInd);
     },
     messages() {
-      return this.group.messages.filter (
+      return this.group.messages.filter(
         (m) =>
           m.content.toUpperCase().includes(this.terms.toUpperCase()) ||
           m.posterName.toUpperCase().includes(this.terms.toUpperCase()) ||
@@ -116,10 +135,16 @@ export default {
     },
   },
   methods: {
+    clearResults() {
+      this.terms = "";
+    },
     postReply(index) {
-      store.commit('postReply', {reply: this.replies[index], message: index, group: this.groupInd})
-      this.replies[index] = ""
-      
+      store.commit("postReply", {
+        reply: this.replies[index],
+        message: index,
+        group: this.groupInd,
+      });
+      this.replies[index] = "";
     },
     sortMessages() {
       if (this.sortFilter === "Recent posts") {
@@ -127,9 +152,9 @@ export default {
       } else if (this.sortFilter === "Newest comments") {
         function compare(a, b) {
           if (a.comments.length == 0) {
-            return 1
+            return 1;
           } else if (b.comments.length == 0) {
-            return -1
+            return -1;
           }
 
           a = a.comments[a.comments.length - 1].date
@@ -173,7 +198,22 @@ export default {
 }
 
 .feed {
+  &.results {
+    background-color: white;
 
+    .results-top {
+      padding: 16px 0px 16px 126px;
+
+      display: flex;
+      margin-left: 40px;
+      align-items: center;
+      justify-content: space-between;
+
+      h3 {
+        margin: 0;
+      }
+    }
+  }
   padding-right: 16px;
   display: flex;
   flex-direction: column;
