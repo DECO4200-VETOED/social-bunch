@@ -28,11 +28,11 @@ import Popup from "../components/Popup.vue";
 export default {
   name: "MessageBoard",
   store: store,
-//   created() {
-//     if (!store.getters.signedIn) {
-//       this.$router.push("/");
-//     }
-//   },
+  created() {
+    if (!store.getters.signedIn) {
+      this.$router.push("/");
+    }
+  },
   components: {
     Folder,
     Popup,

@@ -10,7 +10,6 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
 import store from "../store/index.js";
 import Folder from "../components/Folder.vue";
 
@@ -22,10 +21,6 @@ export default {
       this.$router.push("/");
     }
   },
-//   data() {
-//     return {
-//     }
-//   },
   components: {
     Folder,
   },

@@ -19,7 +19,7 @@
                 nextMeeting: {
                     happeningNow: true,
                     response: null,
-                    time: "11:00am Fri 16th Oct",
+                    time: "11:00am Fri 5th Nov",
                     type: "video",
                     location: null,
                 },
@@ -192,7 +192,7 @@
                 nextMeeting: {
                     happeningNow: false,
                     response: null,
-                    time: "1:00pm Fri 16th Oct",
+                    time: "1:00pm Fri 5th Nov",
                     type: "video",
                     location: null,
                 },
@@ -374,7 +374,7 @@
             nextMeeting: {
                 happeningNow: false,
                 response: null,
-                time: "11:00am Sat 17th Oct",
+                time: "11:00am Sat 17th Dec",
                 type: "video",
                 location: null,
 
