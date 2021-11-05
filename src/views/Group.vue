@@ -83,7 +83,7 @@ export default {
     },
     getAttendance() {
       let attendance = {yes: [], no: [], unsure: []}
-      let responses = this.groupByInd.nextMeeting.responses
+      let responses = this.groupByInd.members
       for (let i = 0; i < responses.length; i++) {
         if (responses[i].attending == null) {
           attendance.unsure.push(responses[i].name)

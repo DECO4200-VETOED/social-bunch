@@ -1,150 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import data from '../data'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {
-        data: {
-            settings: {
-                signedIn: false,
-                onlyCalls: false,
-                activeContact: null,
-            },
-            icons: ["book", "paint", "cards", "camera", "cupcake", "knit", "microphone", "soccer", "trees", "bike", "console", "fish", "pingpong", "bowling"],
-            tabColors: ["green", "yellow", "orange", "blue", "yellow", "orange", "blue", "yellow", "orange", "blue"],
-            profile: {
-                name: "Margaret O'Leary",
-                avatar: "cat.png",
-                telephone: "0412989113",
-                email: "MargaretOl9@hotmail.com",
-                sharing: false,
-            },
-            groups: [{
-                    title: "Art club",
-                    icon: "paint",
-                    nextMeeting: {
-                        happeningNow: true,
-                        response: null,
-                        time: "11:00am Fri 16th Oct",
-                        type: "video",
-                        location: null,
-                        responses: [{
-                                name: "Betty Augustine",
-                                attending: false
-                            },
-                            {
-                                name: "Doris Byrne",
-                                attending: true
-                            },
-                            {
-                                name: "Karen Charles",
-                                attending: null
-                            },
-                        ]
-                    },
-                    members: [{
-                        name: "Betty Augustine",
-                        avatar: "cat.png",
-                        telephone: "0411232343",
-                        email: "betty.a23@gmail.com"
-                    }, {
-                        name: "Alice Thwaites",
-                        avatar: "cat.png",
-                        telephone: "0411232367",
-                        email: "alicethw3@gmail.com"
-                    }, {
-                        name: "Doris Byrne",
-                        avatar: "cat.png",
-                        telephone: "0411222333",
-                        email: "dbyrne@gmail.com"
-                    }, {
-                        name: "Karen Charles",
-                        avatar: "cat.png",
-                        telephone: "0412989113",
-                        email: "karenc@gmail.com"
-                    }],
-                },
-                {
-                    title: "Book club",
-                    icon: "book",
-                    nextMeeting: {
-                        happeningNow: false,
-                        response: null,
-                        time: "1:00pm Fri 16th Oct",
-                        type: "video",
-                        location: null,
-                        responses: [{
-                                name: "Betty Augustine",
-                                attending: false
-                            },
-                            {
-                                name: "Doris Byrne",
-                                attending: true
-                            },
-                            {
-                                name: "Karen Charles",
-                                attending: null
-                            },
-                        ]
-                    },
-                    members: [{
-                        name: "Betty Augustine",
-                        avatar: "cat.png",
-                        telephone: "0411232343",
-                        email: "betty.a23@gmail.com"
-                    }, {
-                        name: "Melissa Kravitz",
-                        avatar: "cat.png",
-                        telephone: "0484272325",
-                        email: "mkrav@gmail.com"
-                    }, {
-                        name: "Doris Byrne",
-                        avatar: "cat.png",
-                        telephone: "0411222333",
-                        email: "dbyrne@gmail.com"
-                    }],
-                }
-            ],
-            invites: [{
-                title: "Plant Society",
-                icon: "paint",
-                nextMeeting: {
-                    happeningNow: false,
-                    response: null,
-                    time: "11:00am Sat 17th Oct",
-                    type: "video",
-                    location: null,
-                    responses: [{
-                            name: "Betty Augustine",
-                            attending: true
-                        },
-                        {
-                            name: "Doris Byrne",
-                            attending: true
-                        },
-                        {
-                            name: "Karen Charles",
-                            attending: null
-                        },
-                    ]
-                },
-                members: [{
-                    name: "Betty Augustine",
-                    avatar: "cat.png",
-                    telephone: "0411232343",
-                    email: "betty.a23@gmail.com"
-                }, {
-                    name: "Doris Byrne",
-                    avatar: "cat.png",
-                    telephone: "0411222333",
-                    email: "dbyrne@gmail.com"
-                }],
-            }]
-
-
-
-        }
+    state: {data: data
     },
     mutations: {
         signOut(state) {
@@ -197,7 +58,6 @@ export default new Vuex.Store({
                     time: null,
                     type: null,
                     location: null,
-                    responses: []
                 },
                 members: [
                 // {

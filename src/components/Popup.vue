@@ -477,6 +477,7 @@ img {
   width: 90%;
   margin: 0 auto;
   text-align: left;
+  overflow: hidden;
 
   i {
     color: black;
@@ -495,11 +496,22 @@ img {
     flex: 1;
     border-right: 2px solid black;
     padding-right: 5%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
 
   .right-column {
     flex: 1;
     padding-left: 5%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
+
 
     .row {
       display: flex;

@@ -13,53 +13,55 @@
 
       <div class="label-content">
         <h3 class="label">Search:</h3>
-        <input type="text" />
+        <input type="text" v-model="terms" />
       </div>
       <div class="label-content">
         <h3 class="label">Sort by:</h3>
         <drop-down
           :options="['Recent posts', 'Newest comments', 'Most popular']"
           :currentType="'Recent posts'"
+          @input="(value) => (sortFilter = value.options[value.index])"
         />
       </div>
     </div>
 
-    <div class="feed">
-      <div class="post">
+    <div class="feed custom-scroll" :class="groupColor">
+      <div v-for="(message, index) in sortMessages()" :key="index" class="post">
         <div class="poster">
-          <img :src="require('@/assets/' + profileData.avatar)" />
+          <img :src="require('@/assets/' + message.posterAvatar)" />
 
-          <h4>Doris B</h4>
-          <h4>23/07/21</h4>
+          <h4>{{ message.posterName }}</h4>
+          <h4>{{ message.date }}</h4>
         </div>
 
         <div class="content" :class="groupColor">
           <div class="main-post">
-            <h3>Recommendations for good oil paints?</h3>
+            <h3>{{ message.title }}</h3>
             <p>
-              I've been trying to get into oil painting recently, but I'm not
-              quite sure where the best place to buy from is in Sydney. Has
-              anyone had any experience shopping for oil paints in and around
-              the cbd? I'd love some advice. Thanks, Doris :)
+              {{ message.content }}
             </p>
             <div
+              v-if="message.image != ''"
               class="center-cropped"
-              style="
-                background-image: url('https://www.carlisleart.com.au/database/images/art-spectrum-oil-paints-series-4-5-main-40063-40063.jpg');
-              "
+              :style="`background-image: url('${message.image}');`"
             ></div>
 
             <hr />
           </div>
 
-          <div class="comment">
-            <img :src="require('@/assets/' + profileData.avatar)" />
+          <div
+            v-for="(comment, i) in message.comments"
+            :key="i"
+            class="comment"
+          >
+            <img :src="require('@/assets/' + comment.posterAvatar)" />
             <div>
-              <p class="subtitle">Margaret O, 23/07/21</p>
+              <p class="subtitle">
+                {{ `${comment.posterName}, ${comment.date}` }}
+              </p>
 
               <p>
-                I usually opt for Eckersley’s on York street. The staff are very
-                friendly and their range has never disappointed me.
+                {{ comment.content }}
               </p>
             </div>
           </div>
@@ -92,6 +94,9 @@ export default {
   components: {
     DropDown,
   },
+  data() {
+    return { terms: "", sortFilter: "Recent posts" };
+  },
   computed: {
     ...mapGetters(["profileData"]),
     group() {
@@ -101,8 +106,44 @@ export default {
       console.log(this.groupInd, store.getters.colorByGroup(this.groupInd));
       return store.getters.colorByGroup(this.groupInd);
     },
+    messages() {
+
+      return this.group.messages.filter(
+        (m) =>
+          m.content.toUpperCase().includes(this.terms.toUpperCase()) ||
+          m.posterName.toUpperCase().includes(this.terms.toUpperCase()) ||
+          m.title.toUpperCase().includes(this.terms.toUpperCase())
+      );
+    },
   },
-  methods: {},
+  methods: {
+    sortMessages() {
+      if (this.sortFilter === "Recent posts") {
+        return this.messages;
+      } else if (this.sortFilter === "Newest comments") {
+        function compare(a, b) {
+          a = a.comments[a.comments.length - 1].date
+            .split("/")
+            .reverse()
+            .join("");
+          b = b.comments[b.comments.length - 1].date
+            .split("/")
+            .reverse()
+            .join("");
+          return a > b ? -1 : a < b ? 1 : 0;
+        }
+        return this.messages.slice().sort(compare);
+      } else if (this.sortFilter === "Most popular") {
+        function compare(a, b) {
+          if (a.comments.length > b.comments.length) {
+            return -1;
+          }
+          return 1;
+        }
+        return this.messages.slice().sort(compare);
+      }
+    },
+  },
 };
 </script>
 
@@ -122,18 +163,19 @@ export default {
 }
 
 .feed {
+  padding-right: 16px;
   display: flex;
   flex-direction: column;
 
   overflow: scroll;
   margin: 40px 60px 20px;
-  //   background-color: red;
   height: calc(100% - 284px);
 
   .post {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 32px;
 
     .poster {
       display: flex;
@@ -241,6 +283,7 @@ export default {
   flex-direction: column;
   gap: 16px;
   min-width: 250px;
+  width: 300px;
   max-width: 400px;
   flex-grow: 1;
   input {

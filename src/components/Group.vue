@@ -76,7 +76,7 @@
         v-if="group.admin"
         class="long outline"
       >
-        Schedule a call
+        Schedule a meeting
       </button>
 
       <button :class="groupColor" @click="$emit('showMembers')">Members</button>
@@ -128,6 +128,7 @@ export default {
   height: calc(100% - 265px);
 
   .left {
+    margin-top: -20px;
     border-right: 2px black solid;
     display: flex;
     flex-direction: column;

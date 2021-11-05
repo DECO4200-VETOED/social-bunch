@@ -12,7 +12,7 @@ USAGE:
   <div class="custom-select">
     <div class="selected" :class="{ open: open }" @click="open = !open">
       <div class="text">
-        {{ currentType }}
+        {{ selected }}
       </div>
       
       <i v-if="!open" class="fas fa-chevron-down fa-lg icon"></i>
@@ -50,6 +50,7 @@ export default {
   methods: {
     handleSelection(options, i) {
       this.selected = options[i];
+      console.log(this.selected)
       this.open = false;
       this.$emit("input", {options: options, index: i});
     }
