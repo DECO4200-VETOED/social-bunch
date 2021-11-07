@@ -1,10 +1,6 @@
 <template>
   <div class="contacts">
-    <folder
-      :manualTitle="'Contacts'"
-      :activeColor="'bg'"
-      :contacts="true"
-    >
+    <folder :manualTitle="'Contacts'" :activeColor="'bg'" :contacts="true">
     </folder>
   </div>
 </template>
@@ -24,5 +20,5 @@ export default {
   components: {
     Folder,
   },
-}
+};
 </script>

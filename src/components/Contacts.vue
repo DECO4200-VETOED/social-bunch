@@ -97,12 +97,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="controls">
-        <button class="circle">
-          <i class="fas fa-arrow-up fa-4x"></i>
-        </button>
-        <button class="circle"><i class="fas fa-arrow-down fa-4x"></i></button>
-      </div> -->
     </div>
   </div>
 </template>
@@ -118,7 +112,6 @@ export default {
     return {
       terms: "",
       inResult: null,
-      //   active: null,
     };
   },
   computed: {
@@ -164,7 +157,7 @@ hr {
   overflow: scroll;
 
   &::-webkit-scrollbar {
-    display: none;;
+    display: none;
   }
   text-align: left;
 
@@ -321,10 +314,7 @@ hr {
     }
 
     &.active {
-      // outline: 4px solid $green;
       box-shadow: 0px 0px 0px 4px $green;
-      // border: 4px solid $green;
-
     }
   }
 

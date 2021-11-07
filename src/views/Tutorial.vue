@@ -117,7 +117,6 @@ export default {
     width: 50%;
     display: flex;
     background-color: #faf6f1;
-    // height: 100%;
     margin: 80px 40px 80px 0;
 
     .dots {

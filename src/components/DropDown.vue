@@ -1,13 +1,3 @@
-/*
-
-USAGE:
-
-<dropdown-base
-  :options="['option 1', 'option 2', 'option 3']"
-/>
-
-*/
-
 <template>
   <div class="custom-select">
     <div class="selected" :class="{ open: open }" @click="open = !open">
@@ -59,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "./src/assets/main.scss";
-/* Text styling */
+
 .selected,
 .items {
   @include sans-serif;
@@ -74,7 +64,6 @@ export default {
   font-weight: normal;
 }
 
-/* Other styling */
 .custom-select {
   position: relative;
   width: 100%;
@@ -90,7 +79,6 @@ export default {
   background-color: white;
   border-radius: 4px;
   border: 2px solid white;
-//   color: #566370;
   padding-left: 1em;
   cursor: pointer;
   user-select: none;
@@ -137,7 +125,6 @@ export default {
   cursor: pointer;
   user-select: none;
 }
-
 
 .selectHide {
   display: none;

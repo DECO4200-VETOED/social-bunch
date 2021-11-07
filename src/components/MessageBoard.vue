@@ -213,6 +213,7 @@ export default {
       }
     }
   }
+
   padding-right: 16px;
   display: flex;
   flex-direction: column;
@@ -246,7 +247,6 @@ export default {
 
     .content {
       width: 80%;
-      //   background-color: blue;
       padding: 8px 16px;
 
       &.blue {
@@ -299,7 +299,6 @@ export default {
         margin: 16px 0 8px 0;
         textarea {
           flex-grow: 1;
-          //   width: 80%;
           min-height: 48px;
           height: auto;
           @include sans-serif;
@@ -311,7 +310,6 @@ export default {
           color: black;
           width: 120px;
 
-          //   flex-grow: 0;
         }
       }
     }

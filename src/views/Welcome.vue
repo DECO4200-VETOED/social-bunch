@@ -190,17 +190,17 @@ export default {
   },
   methods: {
     goTo(state) {
-      store.commit('resetOnlyCalls')
+      store.commit("resetOnlyCalls");
       this.state = state;
       this.showCallSettings = false;
     },
     signIn() {
-        store.commit('signIn')
-        this.$router.push("/home")
+      store.commit("signIn");
+      this.$router.push("/home");
     },
     createAccount() {
-        store.commit('createAccount')
-        this.$router.push("/tutorial")
+      store.commit("createAccount");
+      this.$router.push("/tutorial");
     },
     callSettings() {
       this.showCallSettings = true;
@@ -369,8 +369,6 @@ export default {
       background-color: white;
       -webkit-transition: 0.2s;
       transition: 0.2s;
-      //   border-radius: 34px;
-      //   outline: 2px solid black;
 
       -webkit-border-radius: 34px;
       -moz-border-radius: 34px;

@@ -6,7 +6,7 @@
       :color="groupColor"
       :type="'post'"
       :title="'New Post'"
-      :content="{groupInd: groupInd}"
+      :content="{ groupInd: groupInd }"
     />
     <folder
       :activeColor="tabColors[groupInd]"
@@ -14,7 +14,6 @@
       :messageBoard="true"
       @newPost="newPost = true"
     />
-    
   </div>
 </template>
 
@@ -48,12 +47,11 @@ export default {
       return this.$route.params.id;
     },
     groupByInd() {
-      return store.getters.groupByInd(this.groupInd)
+      return store.getters.groupByInd(this.groupInd);
     },
     groupColor() {
       return store.getters.colorByGroup(this.groupInd);
     },
-    
   },
 };
 </script>

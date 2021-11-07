@@ -17,18 +17,30 @@
       <div class="folder-header" :class="activeColor">
         <h1>{{ title }}</h1>
         <div class="folder-nav">
-          <button :class="contacts ? 'active' : ''" @click="routePage('contacts')">
+          <button
+            :class="contacts ? 'active' : ''"
+            @click="routePage('contacts')"
+          >
             <i class="fas fa-phone fa-lg"></i>CONTACTS
           </button>
-          <button :class="profile ? 'active' : ''" @click="routePage('profile')">
+          <button
+            :class="profile ? 'active' : ''"
+            @click="routePage('profile')"
+          >
             <i class="fas fa-user fa-lg"></i>MY PROFILE
           </button>
-          <button class="info" @click="$store.commit('setHelp', true)"><i class="fas fa-info fa-lg"></i></button>
+          <button class="info" @click="$store.commit('setHelp', true)">
+            <i class="fas fa-info fa-lg"></i>
+          </button>
         </div>
       </div>
 
       <!-- CONDITIONALLY INSERT OTHER COMPONENTS HERE BASED ON CURRENT PAGE -->
-      <message-board v-if="messageBoard" :groupInd="groupInd" @newPost="$emit('newPost')"/>
+      <message-board
+        v-if="messageBoard"
+        :groupInd="groupInd"
+        @newPost="$emit('newPost')"
+      />
       <group
         v-else-if="groupInd != null"
         :groupInd="groupInd"
@@ -41,15 +53,12 @@
       <profile
         v-if="profile"
         @changingPassword="$emit('changingPassword')"
-        @leaveGroup="value => $emit('leaveGroup', value)"
-        @joinGroup="value => $emit('joinGroup', value)"
-        @declineInvite="value => $emit('declineInvite', value)"
+        @leaveGroup="(value) => $emit('leaveGroup', value)"
+        @joinGroup="(value) => $emit('joinGroup', value)"
+        @declineInvite="(value) => $emit('declineInvite', value)"
       ></profile>
 
-      <contacts
-        v-if="contacts"
-      ></contacts>
-
+      <contacts v-if="contacts"></contacts>
     </div>
   </div>
 </template>
@@ -68,7 +77,7 @@ export default {
     Group,
     Profile,
     Contacts,
-    MessageBoard
+    MessageBoard,
   },
   store: store,
   props: {
@@ -77,7 +86,7 @@ export default {
     groupInd: Number,
     contacts: Boolean,
     profile: Boolean,
-    messageBoard: Boolean
+    messageBoard: Boolean,
   },
   computed: {
     ...mapGetters(["tabs"], ["tabColors"]),
@@ -99,11 +108,13 @@ export default {
       }
     },
     routePage(route) {
-      if ((route === 'profile' && this.profile) || (route === 'contacts' && this.contacts)) {
-        return
+      if (
+        (route === "profile" && this.profile) ||
+        (route === "contacts" && this.contacts)
+      ) {
+        return;
       }
-        this.$router.push(`/${route}`);
-
+      this.$router.push(`/${route}`);
     },
     isActive(index) {
       if (this.groupInd == index) {
@@ -150,6 +161,7 @@ export default {
   overflow-y: scroll;
 
   .tab {
+    @include backgrounds;
     z-index: 10;
     margin: 8px 0;
     min-height: 200px;
@@ -160,8 +172,6 @@ export default {
     text-align: center;
     display: flex;
     cursor: pointer;
-
-    // overflow: hidden;
 
     span {
       height: 160px;
@@ -178,22 +188,6 @@ export default {
       transform: rotate(180deg);
     }
 
-    &.green {
-      background-color: $green;
-    }
-
-    &.blue {
-      background-color: $blue;
-    }
-
-    &.orange {
-      background-color: $orange;
-    }
-
-    &.yellow {
-      background-color: $yellow;
-    }
-
     &.active {
       width: 56px;
     }
@@ -208,28 +202,13 @@ export default {
   border-left-width: 5px;
   max-width: calc(100% - 69px);
 
-  &.blue {
-    border-color: $blue;
-  }
-
-  &.orange {
-    border-color: $orange;
-  }
-
-  &.yellow {
-    border-color: $yellow;
-  }
-
-  &.bg {
-    border-color: $bg-color;
-  }
+  @include borders;
 
   h1 {
     text-align: left;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    // margin-block: 30px;
   }
 }
 
@@ -277,25 +256,7 @@ export default {
   border-bottom-width: 5px;
   border-bottom-color: black;
 
-  &.blue {
-    border-color: $blue;
-  }
-
-  &.orange {
-    border-color: $orange;
-  }
-
-  &.yellow {
-    border-color: $yellow;
-  }
-
-  &.green {
-    border-color: $green;
-  }
-
-  &.bg {
-    border-color: $bg-color;
-  }
+  @include borders;
 }
 </style>
 

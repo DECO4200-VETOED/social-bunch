@@ -13,7 +13,7 @@
       :color="groupColor"
       :type="'members'"
       :title="'Members'"
-      :content="{members: groupByInd.members}"
+      :content="{ members: groupByInd.members }"
     />
     <popup
       v-if="showingCall"
@@ -38,7 +38,6 @@
       @showGoing="showingGoing = true"
       @showInvites="showingInvites = true"
     >
-    
     </folder>
   </div>
 </template>
@@ -76,26 +75,26 @@ export default {
       return this.$route.params.id;
     },
     groupByInd() {
-      return store.getters.groupByInd(this.groupInd)
+      return store.getters.groupByInd(this.groupInd);
     },
     groupColor() {
       return store.getters.colorByGroup(this.groupInd);
     },
     getAttendance() {
-      let attendance = {yes: [], no: [], unsure: []}
-      let responses = this.groupByInd.members
+      let attendance = { yes: [], no: [], unsure: [] };
+      let responses = this.groupByInd.members;
       for (let i = 0; i < responses.length; i++) {
         if (responses[i].attending == null) {
-          attendance.unsure.push(responses[i].name)
+          attendance.unsure.push(responses[i].name);
         } else if (responses[i].attending) {
-          attendance.yes.push(responses[i].name)
+          attendance.yes.push(responses[i].name);
         } else {
-          attendance.no.push(responses[i].name)
+          attendance.no.push(responses[i].name);
         }
       }
 
-      return attendance
-    }
+      return attendance;
+    },
   },
 };
 </script>

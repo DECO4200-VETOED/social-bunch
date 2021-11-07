@@ -42,6 +42,28 @@ $green: #3DA194;
     }
 }
 
+@mixin borders {
+    &.green {
+        border-color: $green;
+    }
+
+    &.blue {
+        border-color: $blue;
+    }
+
+    &.orange {
+        border-color: $orange;
+    }
+
+    &.yellow {
+        border-color: $yellow;
+    }
+
+    &.bg {
+        border-color: $bg-color;
+    }
+}
+
 ///// Utility classes /////
 .vertical-center {
     display: flex;
@@ -190,22 +212,22 @@ button {
 }
 
 .custom-scroll.yellow::-webkit-scrollbar-thumb {
-        background: $yellow;
+    background: $yellow;
 
 }
 
 .custom-scroll.orange::-webkit-scrollbar-thumb {
-        background: $orange;
+    background: $orange;
 
 }
 
 .custom-scroll.blue::-webkit-scrollbar-thumb {
-        background: $blue;
+    background: $blue;
 
 }
 
 .custom-scroll.green::-webkit-scrollbar-thumb {
-        background: $green;
+    background: $green;
 
 }
 
@@ -245,7 +267,8 @@ textarea {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus, textarea:focus {
+input[type="password"]:focus,
+textarea:focus {
     border: 2px solid $green;
 }
 

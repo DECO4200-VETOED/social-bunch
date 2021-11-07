@@ -489,19 +489,3 @@
     }
 
     export default data;
-
-
-    // {
-    //     posterName: "",
-    //     posterAvatar: "cat.png",
-    //     date: "04/11/21",
-    //     title: "",
-    //     content: "",
-    //     image: "",
-    //     comments: [{
-    //         posterName: "",
-    //         posterAvatar: "cat.png",
-    //         date: "04/11/21",
-    //         content: "",
-    //     }, ],
-    // },

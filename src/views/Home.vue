@@ -13,7 +13,7 @@
     </div>
     <div class="vertical-center">
       <p>Join or create a group to get started with Social Bunch!</p>
-      <div class="row" style="width: 60%; margin: 30px auto;">
+      <div class="row" style="width: 60%; margin: 30px auto">
         <button class="long green" @click="routePage('create')">
           <i class="fas fa-plus fa-me"></i>Create a group
         </button>
@@ -122,10 +122,7 @@
         </div>
       </div>
       <div class="circle" @click="$store.commit('setHelp', true)">
-        <button
-              class="long white"
-            >Need help?
-            </button>
+        <button class="long white">Need help?</button>
         <img src="../assets/FAQ_Lady.png" height="250px" style="float: right" />
       </div>
     </div>
@@ -175,9 +172,9 @@ export default {
       }
     },
     signOut() {
-      store.commit('signOut')
-      this.$router.push('/')
-    }
+      store.commit("signOut");
+      this.$router.push("/");
+    },
   },
 };
 </script>

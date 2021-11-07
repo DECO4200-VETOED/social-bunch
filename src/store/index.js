@@ -5,7 +5,8 @@ import data from '../data'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {data: data
+    state: {
+        data: data
     },
     mutations: {
         signOut(state) {
@@ -34,7 +35,11 @@ export default new Vuex.Store({
             state.data.settings.signedIn = true
             // TODO: Would go to a create account flow??
         },
-        postReply(state, {reply, message, group}) {
+        postReply(state, {
+            reply,
+            message,
+            group
+        }) {
             state.data.groups[group - 1].messages[message].comments.push({
                 posterName: state.data.profile.name,
                 posterAvatar: state.data.profile.avatar,
@@ -42,7 +47,12 @@ export default new Vuex.Store({
                 content: reply
             })
         },
-        makePost(state, {title, content, img, group}) {
+        makePost(state, {
+            title,
+            content,
+            img,
+            group
+        }) {
             state.data.groups[group - 1].messages.splice(0, 0, {
                 posterName: state.data.profile.name,
                 posterAvatar: state.data.profile.avatar,
@@ -50,7 +60,8 @@ export default new Vuex.Store({
                 title: title,
                 content: content,
                 image: img,
-                comments: []})
+                comments: []
+            })
         },
         leaveGroup(state, index) {
             state.data.groups.splice(index, 1)
@@ -75,14 +86,7 @@ export default new Vuex.Store({
                     type: null,
                     location: null,
                 },
-                members: [
-                // {
-                //     name: state.data.profile.name,
-                //     avatar: state.data.profile.avatar,
-                //     telephone: state.data.profile.telephone,
-                //     email: state.data.profile.email
-                // }
-            ]
+                members: []
             }
 
 

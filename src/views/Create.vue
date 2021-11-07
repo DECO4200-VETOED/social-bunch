@@ -10,7 +10,9 @@
           <button @click="$router.push('profile')">
             <i class="fas fa-user fa-lg"></i>MY PROFILE
           </button>
-          <button class="info" @click="$store.commit('setHelp', true)"><i class="fas fa-info fa-lg"></i></button>
+          <button class="info" @click="$store.commit('setHelp', true)">
+            <i class="fas fa-info fa-lg"></i>
+          </button>
         </div>
       </div>
       <!-- TODO: Make this not lorem ipsum? -->
@@ -59,7 +61,6 @@
 <script>
 import store from "../store/index.js";
 import { mapGetters } from "vuex";
-import Popup from "../components/Popup.vue";
 
 export default {
   name: "Create",
@@ -90,7 +91,7 @@ export default {
         icon: this.activeIcon,
       });
 
-      this.$router.push('/home')
+      this.$router.push("/home");
     },
   },
 };
@@ -180,7 +181,6 @@ export default {
   .label {
     width: 20%;
     margin-top: 0;
-    // flex-grow: 1;
   }
 
   input {

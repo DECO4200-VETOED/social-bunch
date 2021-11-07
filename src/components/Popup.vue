@@ -238,7 +238,6 @@
         </div>
       </div>
 
-      <!-- Other modal menu content -->
     </div>
   </div>
 </template>
@@ -272,9 +271,14 @@ export default {
       this.$router.push("/contacts");
     },
     makePost(groupInd) {
-      store.commit("makePost", {title: this.postTitle, content: this.postContent, img: this.postImg, group: groupInd});
-      this.$emit('triggerClose')
-    }
+      store.commit("makePost", {
+        title: this.postTitle,
+        content: this.postContent,
+        img: this.postImg,
+        group: groupInd,
+      });
+      this.$emit("triggerClose");
+    },
   },
   data() {
     return {
@@ -381,15 +385,6 @@ h2 {
   align-items: center;
 }
 
-/* The Close Button */
-.close {
-  color: black;
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  cursor: pointer;
-}
-
 ///// Password Popup Styles /////
 .password {
   padding: 0 15%;
@@ -465,7 +460,8 @@ img {
 .join-group,
 .decline,
 .invite,
-.emails, .post {
+.emails,
+.post {
   width: 90%;
   margin: 16px auto 0;
 

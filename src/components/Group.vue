@@ -72,15 +72,17 @@
       >
         Invite members
       </button>
-      <button
-        v-if="group.admin"
-        class="long outline"
-      >
+      <button v-if="group.admin" class="long outline">
         Schedule a meeting
       </button>
 
       <button :class="groupColor" @click="$emit('showMembers')">Members</button>
-      <button :class="groupColor" @click="$router.push(`/group/${groupInd}/messages`)">Message Board</button>
+      <button
+        :class="groupColor"
+        @click="$router.push(`/group/${groupInd}/messages`)"
+      >
+        Message Board
+      </button>
     </div>
   </div>
 </template>
@@ -203,7 +205,7 @@ export default {
         min-height: 150px;
       }
       .outline {
-      min-height: 60px;
+        min-height: 60px;
       }
     }
 

@@ -97,7 +97,6 @@ export default {
 .profile {
   display: flex;
   flex-direction: column;
-  // margin: 0;
   margin: 16px 64px;
 
   .profile-top {
@@ -116,7 +115,6 @@ export default {
         width: 200px;
         margin: 0 auto;
         border-radius: 50%;
-        // background: black;
       }
 
       h3 {
@@ -189,6 +187,7 @@ export default {
   width: 200px;
   margin: 16px 0 0;
   border-radius: 30px;
+  @include backgrounds;
 
   &.expanded {
     flex-grow: 1;
@@ -212,18 +211,6 @@ export default {
     font-weight: 700;
   }
 
-  &.blue {
-    background-color: $blue;
-  }
-
-  &.orange {
-    background-color: $orange;
-  }
-
-  &.yellow {
-    background-color: $yellow;
-  }
-
   &.red {
     border: 2px solid red;
   }
@@ -233,7 +220,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
   gap: 16px;
 
   button {
