@@ -8,7 +8,11 @@
             <i class="fas fa-phone fa-lg"></i>CONTACTS
           </button>
           <button @click="$router.push('profile')">
-            <i class="fas fa-user fa-lg"></i>MY PROFILE
+            <span v-if="$store.getters.invites.length > 0" class="fa-stack fa-lg has-badge">
+              <i class="fas fa-user fa-stack-lg"></i>
+            </span>
+            <i v-else class="fas fa-user fa-lg"></i>
+            MY PROFILE
           </button>
           <button class="info" @click="$store.commit('setHelp', true)">
             <i class="fas fa-info fa-lg"></i>

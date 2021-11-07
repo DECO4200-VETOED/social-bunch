@@ -106,6 +106,7 @@ export default new Vuex.Store({
         activeContact: state => state.data.settings.activeContact,
         viewHelp: state => state.data.settings.viewHelp,
         faqs: state => state.data.faqs,
+        invites: state => state.data.invites,
         contacts: state => {
             let contacts = []
             let index = 0
