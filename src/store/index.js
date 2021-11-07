@@ -86,7 +86,8 @@ export default new Vuex.Store({
                     type: null,
                     location: null,
                 },
-                members: []
+                members: [],
+                messages: [],
             }
 
 
