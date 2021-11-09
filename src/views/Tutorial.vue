@@ -1,7 +1,7 @@
 <template>
   <div class="tutorial">
     <img
-      src="../assets/FAQ_Lady.png"
+      :src="require(`@/assets/FAQ_Lady_${stateInd + 1}.png`)"
       height="250px"
       style="position: absolute; left: 0; bottom: 0"
     />
