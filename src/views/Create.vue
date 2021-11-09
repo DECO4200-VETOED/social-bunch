@@ -8,7 +8,10 @@
             <i class="fas fa-phone fa-lg"></i>CONTACTS
           </button>
           <button @click="$router.push('profile')">
-            <span v-if="$store.getters.invites.length > 0" class="fa-stack fa-lg has-badge">
+            <span
+              v-if="$store.getters.invites.length > 0"
+              class="fa-stack fa-lg has-badge"
+            >
               <i class="fas fa-user fa-stack-lg"></i>
             </span>
             <i v-else class="fas fa-user fa-lg"></i>
@@ -19,12 +22,13 @@
           </button>
         </div>
       </div>
-      <!-- TODO: Make this not lorem ipsum? -->
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Natoque
-        ultrices proin aenean faucibus. Amet, et vitae, quam congue. Congue
-        porttitor massa, ut viverra neque neque. Tortor magna eget sed lorem
-        feugiat. Faucibus.
+      <p style="width: 70%">
+        <strong
+          >You can create a new group by adding a group name and selecting an
+          icon.</strong
+        >
+        <br /><br />Once the group is created you will be an admin, and be able
+        to invite people and schedule calls.
       </p>
 
       <div class="edit-row">
