@@ -1,9 +1,21 @@
 # The Social Bunch
-> The Social Bunch is...
+> The Social Bunch is an intuitive platform for connecting community groups, with a focus on designing for older women aging in place. As we’ve seen through COVID, these groups and their members are often the most affected by enforced periods of isolation. While there are other platforms available to connect groups, our approach has been targeted at minimising barriers to entry for users with low tech literacy and helping them feel empowered to take control of their digital social engagement. This repository contains a hi-fidelity prototype of our concept, designed as part of DECO4200: Advanced Product Design Studio at USYD.
+
+## Table of Contents  
+- [Live Link](#link)  
+- [Local set up instructions](#setup)  
+- [Features](#features)  
+- [UI Mockups](#figma)  
+- [Known Issues](#issues)  
+
+
+<a name="link"/>
 
 ## Live link
 Hosted at [thesocialbunch.netlify.app](https://thesocialbunch.netlify.app)
 
+
+<a name="setup"/>
 
 ## Local set up instructions
 
@@ -26,11 +38,42 @@ npm run serve
 ```
 6. View the project by visiting the localhost link and port displayed and opening Chrome DevTools to view it in landscape iPad view
 
+<a name="features"/>
+
 ## Features
 
+### Home Page ```/home```
+
+<img height="350" src="/src/assets/tut1.png">
+
+### Group Page ```/group/:id```
+
+<img height="350" src="/src/assets/tut2.gif">
+
+### Group Message Board ```/group/:id/messages```
+
+<img height="350" src="/src/assets/tut3.gif">
+
+### Contacts Page ```/contacts```
+
+<img height="350" src="/src/assets/tut4.gif">
+
+### My Profile Page ```/profile```
+
+<img height="350" src="/src/assets/tut5.gif">
+
+### Other pages/routes
+
+- Welcome page (sign in, join call, create an account) ```/```
+- Onboarding tutorial ```/tutorial```
+- Create a group ```/create```
+
+<a name="figma"/>
 
 ## UI mockups
 You can interact with a [click-through mid-fidelity prototype](https://www.figma.com/proto/E33mvqDCpBA52xNVNYGWnJ/A3?page-id=598%3A3940&node-id=598%3A4077&starting-point-node-id=598%3A4077) of The Social Bunch, created using Figma.
+
+<a name="issues"/>
 
 ## Known issues
 ### Platform-related issues
