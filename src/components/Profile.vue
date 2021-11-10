@@ -72,11 +72,7 @@ import Folder from "../components/Folder.vue";
 export default {
   name: "Profile",
   store: store,
-  created() {
-    if (!store.getters.signedIn) {
-      this.$router.push("/");
-    }
-  },
+  
   components: {
     Folder,
   },

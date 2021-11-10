@@ -93,11 +93,7 @@ import store from "../store/index.js";
 export default {
   name: "Tutorial",
   store: store,
-  created() {
-    if (!store.getters.signedIn) {
-      this.$router.push("/");
-    }
-  },
+  
   data() {
     return {
       stateInd: 0,
