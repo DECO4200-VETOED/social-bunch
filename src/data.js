@@ -465,25 +465,39 @@
         }],
 
         faqs: [{
-                title: "How do I join a new group?",
-                body: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur."
+                title: "How do I create a new group?",
+                body: "On your home page, there is a green button called “create a group”. This can be found above ‘Your Groups’. Pressing this button will take you to the ‘Create A Group’ page. Fill in your group name. Choose a group icon. Click ‘Finish’. And that’s it!"
             },
+
             {
-                title: "How can I check when my video group meeting is on?",
-                body: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur."
+                title: "How can I check when my next video meeting is on?",
+                body: "This can be found on your group page. The time and date of your next video meeting will be shown on the left hand side of the screen. A join button will appear at the time of the meeting. You can also view your overall upcoming meetings on the home page at the bottom of the screen. If the meeting is soon, you can also join the call from here or notify your members whether you will be attending or not."
             },
+
             {
-                title: "How can I check who is attending my next meeting?",
-                body: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur."
+                title: "How can I leave my group?",
+                body: "Go to ‘My Profile’. At the bottom of the page you can see ‘My groups’. Click ‘edit’ and then ‘quit’ for the groups you’d like to leave."
             },
-            // {title: "", body: ""},
-            // {title: "", body: ""},
-            // {title: "", body: ""},
-            // {title: "", body: ""},
-            // {title: "", body: ""},
-            // {title: "", body: ""},
-            // {title: "", body: ""},
-            // {title: "", body: ""},
+
+            {
+                title: "How do I create a new post in the message board?",
+                body: "There is a ‘plus’ icon underneath the ‘search’ bar. Click this and you can show your group friends what you’ve been up to!"
+            },
+
+            {
+                title: "How do I notify my group that I can’ t attend the next meeting?",
+                body: "In your group page, there is a thumbs up and a thumbs down on the left hand side of the screen. You can click either to let your friends know whether you will be attending the next group meeting!"
+            },
+
+            {
+                title: "How can I see who is in my group?",
+                body: "In your groups page, there is a button that says 'members’ on the right hand side of the screen. ‘Click’ that button to see who is a part of the group."
+            },
+
+            {
+                title: "How can I contact my group friends?",
+                body: "At the top of the page is a 'contacts’ button. ‘Click’ this so you can scroll through the contacts for people in your different groups. You can also use the ‘search’ bar to find specific people if you don’t want to scroll."
+            }
         ]
 
     }
