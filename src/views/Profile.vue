@@ -62,7 +62,11 @@ import Popup from "../components/Popup.vue";
 export default {
   name: "Profile",
   store: store,
-  
+  created() {
+    if (!store.getters.signedIn) {
+      this.$router.push("/");
+    }
+  },
   data() {
     return {
       changingPassword: false,

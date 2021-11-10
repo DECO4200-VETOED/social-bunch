@@ -12,7 +12,11 @@ import Folder from "../components/Folder.vue";
 export default {
   name: "Contacts",
   store: store,
-  
+  created() {
+    if (!store.getters.signedIn) {
+      this.$router.push("/");
+    }
+  },
   components: {
     Folder,
   },

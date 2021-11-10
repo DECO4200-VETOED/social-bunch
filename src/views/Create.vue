@@ -73,7 +73,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "Create",
   store: store,
-  
+  created() {
+    if (!store.getters.signedIn) {
+      this.$router.push("/");
+    }
+  },
   data() {
     return {
       activeIcon: 0,

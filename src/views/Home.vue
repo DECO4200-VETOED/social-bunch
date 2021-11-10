@@ -145,7 +145,11 @@ export default {
   name: "Home",
   store: store,
   components: { Popup },
-  
+  created() {
+    if (!store.getters.signedIn) {
+      this.$router.push("/");
+    }
+  },
   data() {
     return {
       showingCall: false,

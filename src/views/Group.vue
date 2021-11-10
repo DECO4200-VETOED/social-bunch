@@ -52,7 +52,11 @@ import Popup from "../components/Popup.vue";
 export default {
   name: "Group",
   store: store,
-  
+  created() {
+    if (!store.getters.signedIn) {
+      this.$router.push("/");
+    }
+  },
   components: {
     Folder,
     Popup,
